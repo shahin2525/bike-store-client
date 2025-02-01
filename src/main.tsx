@@ -5,7 +5,7 @@ import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div style={{ maxWidth: "1680px", margin: "auto" }}>
+    <div style={{ maxWidth: "1280px", margin: "auto" }}>
       <App />
     </div>
   </StrictMode>

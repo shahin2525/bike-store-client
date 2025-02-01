@@ -90,13 +90,13 @@ const MainLayout = () => {
         />
       </Sider>
       <Layout>
-        <Header style={{ padding: 0 }}>
+        <Header style={{ background: "white" }}>
           {" "}
           <div className="demo-logo" />
           <Menu
-            theme="dark"
+            // theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={["2"]}
+            defaultSelectedKeys={["1"]}
             items={items1}
             style={{ flex: 1, minWidth: 0 }}
           />{" "}
