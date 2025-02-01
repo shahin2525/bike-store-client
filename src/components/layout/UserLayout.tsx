@@ -10,10 +10,19 @@ const UserLayout = () => {
     <Layout>
       <HeaderComponent />
       <Layout>
-        <Content style={{ margin: "24px 16px 0" }}>
+        <Content
+          style={
+            {
+              // margin: "0px",
+              // padding: "0px",
+            }
+          }
+        >
           <div
             style={{
-              padding: 24,
+              padding: 0,
+              margin: 0,
+              // padding: 24,
               minHeight: 360,
             }}
           >

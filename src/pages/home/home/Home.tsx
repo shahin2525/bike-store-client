@@ -5,13 +5,12 @@ import Testimonial from "../../../components/ui/tesmonial/Testmonial";
 
 const Home = () => {
   return (
-    <div>
-      <h1 style={{ color: "red" }}>I am from Home</h1>
+    <>
       <Banner />
       <Features />
       <Testimonial />
       <Footer />
-    </div>
+    </>
   );
 };
 

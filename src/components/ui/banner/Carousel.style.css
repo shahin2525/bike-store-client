@@ -1,0 +1,65 @@
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Adjust as needed */
+  object-fit: cover;
+  display: block;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  width: 100%;
+}
+
+.left-text {
+  left: 20px;
+  transform: translateY(-50%);
+  text-align: left;
+}
+
+.right-text {
+  right: 20px;
+  transform: translateY(-50%);
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .text-overlay {
+    font-size: 1.5rem;
+    padding: 10px;
+  }
+}
+
+/* Styling for the Ant Design Carousel itself (if needed) */
+.ant-carousel .slick-dots li button {
+  /* Example: targetting dots */
+  background-color: transparent;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+  background-color: blue;
+}
+.ant-carousel .slick-slider .slick-list .slick-track .slick-slide > div {
+  padding: 0 0px;
+}
