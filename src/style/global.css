@@ -1,0 +1,10 @@
+.ant-btn-primary {
+  color: white !important; /* Force text color to stay white */
+  opacity: 1 !important; /* Ensure full brightness */
+  font-weight: bold !important; /* Make text stand out */
+}
+
+.ant-btn-primary:hover {
+  color: white !important;
+  opacity: 1 !important;
+}

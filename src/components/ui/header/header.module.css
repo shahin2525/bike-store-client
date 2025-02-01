@@ -1,0 +1,9 @@
+.menu-item a {
+  color: white !important;
+  opacity: 1 !important;
+}
+
+.menu-item:hover a {
+  color: white !important;
+  opacity: 1 !important;
+}

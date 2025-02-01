@@ -1,9 +1,11 @@
-import MainLayout from "./components/layout/Mainlayout";
+// import MainLayout from "./components/layout/UserLayout";
+
+import UserLayout from "./components/layout/UserLayout";
 
 function App() {
   return (
     <>
-      <MainLayout />
+      <UserLayout />
     </>
   );
 }
