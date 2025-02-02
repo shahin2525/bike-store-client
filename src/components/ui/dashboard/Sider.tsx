@@ -35,10 +35,25 @@ const customerItems: MenuProps["items"] = [
 ];
 
 const Sidebar = () => {
+  const role = "admin";
   const UserRole = {
     Admin: "admin",
     Customer: "customer",
   };
+  let sidebarItems;
+
+  switch (role) {
+    case UserRole.Admin:
+      sidebarItems = adminItems;
+      break;
+    case UserRole.Customer:
+      sidebarItems = customerItems;
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <Sider>
       <div
@@ -58,7 +73,7 @@ const Sidebar = () => {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={["4"]}
-        items={adminItems}
+        items={sidebarItems}
       />
     </Sider>
   );
