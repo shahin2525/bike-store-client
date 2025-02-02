@@ -162,7 +162,7 @@ const HeaderComponent = () => {
               icon={user ? <IoLogOutOutline /> : <IoLogInOutline />}
               // onClick={() =>  setUser(user ? null : { name: "User" })}
             >
-              {user ? "Logout" : "Login"}
+              {user ? <Link>Logout</Link> : <Link href="/login">Login</Link>}
             </Button>
           ) : (
             <Button
