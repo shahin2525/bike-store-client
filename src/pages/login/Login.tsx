@@ -8,10 +8,15 @@ const Login = () => {
   console.log("err", error);
 
   console.log(error);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      email: "samin@s.com",
+      password: "user1234",
+    },
+  });
   const onSubmit = (data: FieldValues) => {
     const userInfo = {
-      id: data.id,
+      email: data.email,
       password: data.password,
     };
     login(userInfo);
@@ -19,7 +24,7 @@ const Login = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <label htmlFor="">Id:</label>
-      <input type="text" {...register("id")} />
+      <input type="text" {...register("email")} />
       <br />
       <label htmlFor="">Password:</label>
       <input type="text" {...register("password")} />
