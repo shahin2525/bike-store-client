@@ -9,7 +9,7 @@
 .slide img {
   width: 100%;
   height: auto;
-  max-height: 500px; /* Adjust as needed */
+  max-height: 550px; /* Adjust as needed */
   object-fit: cover;
   display: block;
 }

@@ -56,10 +56,10 @@ import "./Carousel.style.css";
 const Banner = () => {
   const images = [img1, img2, img3, img4];
   const texts = [
-    { left: "Super Power", center: "First Milage", right: "Best Collected" },
-    { left: "Left Text 2", center: "Center Text 2", right: "Right Text 2" },
-    { left: "Left Text 3", center: "Center Text 3", right: "Right Text 3" },
-    { left: "Left Text 4", center: "Center Text 4", right: "Right Text 4" },
+    { left: "Top Motorbikes of the Year!", center: "First Milage", right: "Best Collected" },
+    { left: "Rev Up Your Ride", center: "Speed, Style, and Power", right: "Unleash the Beast" },
+    { left: "Left Text 3", center: "Selling Motorbikes!", right: "Electric vs. Gas" },
+    { left: "The Evolution of Motorbikes!", center: "A Rider’s Guide!", right: "Super Power" },
   ];
   return (
     <>

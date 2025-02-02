@@ -17,13 +17,13 @@ import { useState } from "react";
 import { FaCircleInfo } from "react-icons/fa6";
 import {
   IoHomeOutline,
-  IoCartOutline,
   IoLogInOutline,
   IoLogOutOutline,
   IoMenu,
 } from "react-icons/io5";
 import bikeIcon from "../../../assets/icons/bike-icon5.png";
 import style from "../header/header.module.css";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
 const { Link } = Typography;
 const { Header } = Layout;
@@ -42,7 +42,7 @@ const HeaderComponent = () => {
     {
       key: "all-products",
       label: <Link href="/all-products">All Products</Link>,
-      icon: <IoCartOutline />,
+      icon: <MdOutlineProductionQuantityLimits />,
     },
   ];
 
