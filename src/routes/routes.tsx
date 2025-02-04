@@ -29,18 +29,18 @@ export const router = createBrowserRouter([
         path: "product-details",
         element: <ProductDetails />,
       },
+      {
+        path: "/checkout",
+        element: (
+          <ProtectedRoute>
+            <Checkout></Checkout>
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
   {
     path: "/login",
     element: <Login />,
-  },
-  {
-    path: "/checkout",
-    element: (
-      <ProtectedRoute>
-        <Checkout></Checkout>
-      </ProtectedRoute>
-    ),
   },
 ]);

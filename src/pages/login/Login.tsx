@@ -4,10 +4,15 @@ import { useLoginMutation } from "../../redux/feature/auth/authApi";
 import { verifyToken } from "../../utils/verifyToken";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/feature/auth/authSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useAppDispatch();
   const [login, { error }] = useLoginMutation();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  console.log(location);
   // console.log("data", data);
   console.log("err", error);
 
@@ -27,6 +32,7 @@ const Login = () => {
     const user = verifyToken(res?.data);
     console.log(user);
     dispatch(setUser({ user: user, token: res?.data }));
+    navigate(location?.state ? location.state : "/");
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
