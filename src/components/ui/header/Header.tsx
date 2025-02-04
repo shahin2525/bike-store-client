@@ -1,18 +1,5 @@
-// import { Layout, Menu, Button, Row, Col, Typography, Drawer } from "antd";
-// import { useState } from "react";
-// import { FaCircleInfo } from "react-icons/fa6";
-// import { IoHomeOutline, IoMenu } from "react-icons/io5";
-// import { IoCartOutline } from "react-icons/io5";
-// import bikeIcon from "../../../assets/icons/bike-icon5.png";
-// import { IoLogInOutline } from "react-icons/io5";
-// import { IoLogOutOutline } from "react-icons/io5";
-// import style from "../header/header.module.css";
-// // import buttonStyle from "../../../style/global.css"
-// const { Link } = Typography;
-// // import logo from "../public/bike-logo.png"; // Add a bike shop type logo in public folder
-
 // const { Header } = Layout;
-import { Layout, Menu, Button, Row, Col, Typography, Drawer, Grid } from "antd";
+import { Layout, Menu, Button, Row, Col, Drawer, Grid } from "antd";
 import { useState } from "react";
 import { FaCircleInfo } from "react-icons/fa6";
 import {
@@ -24,101 +11,49 @@ import {
 import bikeIcon from "../../../assets/icons/bike-icon5.png";
 import style from "../header/header.module.css";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
-
-const { Link } = Typography;
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import {
+  logout,
+  selectCurrentUser,
+} from "../../../redux/feature/auth/authSlice";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+// const { Link } = Typography;
 const { Header } = Layout;
 const { useBreakpoint } = Grid;
 const HeaderComponent = () => {
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
+  const user = useAppSelector(selectCurrentUser);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const screens = useBreakpoint(); // Get screen size
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
   const menuItems = [
-    { key: "home", label: <Link href="/">Home</Link>, icon: <IoHomeOutline /> },
+    { key: "home", label: <Link to="/">Home</Link>, icon: <IoHomeOutline /> },
     {
       key: "about",
-      label: <Link href="/about">About</Link>,
+      label: <Link to="/about">About</Link>,
       icon: <FaCircleInfo />,
     },
     {
       key: "all-products",
-      label: <Link href="/all-products">All Products</Link>,
+      label: <Link to="/all-products">All Products</Link>,
       icon: <MdOutlineProductionQuantityLimits />,
     },
   ];
 
   return (
-    // </Header>09122C#727D73
-    // <Header
-    //   style={{ backgroundColor: "#09122C", padding: "0 20px", height: "100px" }}
-    // >
-    //   <Row align="middle" justify="space-between" wrap={false}>
-    //     {/* Logo Section */}
-    //     <Col flex="100px">
-    //       <Link href="/">
-    //         {/* <Image
-    //           src={logo}
-    //           alt="Bike Shop Logo"
-    //           width={50}
-    //           height={50}
-    //           priority
-    //         /> */}
-    //         <img src={bikeIcon} alt="" />
-    //       </Link>
-    //     </Col>
-
-    //     {/* Navigation Menu (Centered) */}
-    //     <Col flex="auto">
-    //       <Menu
-    //         // defaultSelectedKeys={["home"]}
-    //         className={style["menu-item"]}
-    //         mode="horizontal"
-    //         theme="dark"
-    //         items={menuItems} // ✅ Fixed Menu Structure
-    //         style={{
-    //           backgroundColor: "transparent",
-    //           justifyContent: "center",
-    //           color: "white",
-    //           borderBottom: "none",
-    //           alignItems: "center",
-    //           marginBottom: "15px",
-    //           // fontWeight: "bold",
-    //           // opacity: 1,
-    //         }}
-    //         // itemStyle={{ color: "white", opacity: 1 }}
-    //       />
-    //     </Col>
-
-    //     {/* Login/Logout Button (Right Side) */}
-    //     <Col flex="100px" style={{ textAlign: "right", marginBottom: "15px" }}>
-    //       {user ? (
-    //         <Button
-    //           // className={buttonStyle}
-    //           type="primary"
-    //           danger
-    //           icon={<IoLogOutOutline />}
-    //           onClick={() => setUser(null)}
-    //         >
-    //           Logout
-    //         </Button>
-    //       ) : (
-    //         <Button
-    //           type="primary"
-    //           icon={<IoLogInOutline />}
-    //           // onClick={() => setUser({ name: "User" })}
-    //         >
-    //           Login
-    //         </Button>
-    //       )}
-    //     </Col>
-    //   </Row>
-    // </Header>
     <Header
       style={{ backgroundColor: "#09122C", padding: "0 20px", height: "80px" }}
     >
       <Row align="middle" justify="space-between" wrap={false}>
         {/* Left Side: Logo */}
         <Col flex="auto">
-          <Link href="/">
+          <Link to="/">
             <img
               src={bikeIcon}
               alt="Bike Shop Logo"
@@ -157,13 +92,30 @@ const HeaderComponent = () => {
           }}
         >
           {screens.md ? (
-            <Button
-              type="primary"
-              icon={user ? <IoLogOutOutline /> : <IoLogInOutline />}
-              // onClick={() =>  setUser(user ? null : { name: "User" })}
-            >
-              {user ? <Link>Logout</Link> : <Link href="/login">Login</Link>}
-            </Button>
+            // <Button
+            //   type="primary"
+            //   icon={user ? <IoLogOutOutline /> : <IoLogInOutline />}
+
+            // >
+            //   {user ? (
+            //     <Link onClick={handleLogout}>Logout</Link>
+            //   ) : (
+            //     <Link href="/login">Login</Link>
+            //   )}
+            // </Button>
+            user ? (
+              <Button
+                type="primary"
+                icon={<IoLogOutOutline />}
+                onClick={handleLogout}
+              >
+                Logout
+              </Button>
+            ) : (
+              <Button type="primary" icon={<IoLogInOutline />}>
+                <Link to="/login">Login</Link>
+              </Button>
+            )
           ) : (
             <Button
               type="text"
@@ -182,7 +134,7 @@ const HeaderComponent = () => {
         open={drawerVisible}
       >
         <Menu mode="inline" theme="light" items={menuItems} />
-        <Button
+        {/* <Button
           block
           type="primary"
           style={{ marginTop: "10px" }}
@@ -190,7 +142,20 @@ const HeaderComponent = () => {
           // onClick={() => setUser(user ? null : { name: "User" })}
         >
           {user ? "Logout" : "Login"}
-        </Button>
+        </Button> */}
+        {user ? (
+          <Button
+            type="primary"
+            icon={<IoLogOutOutline />}
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        ) : (
+          <Button type="primary" icon={<IoLogInOutline />}>
+            <Link to="/login">Login</Link>
+          </Button>
+        )}
       </Drawer>
     </Header>
   );

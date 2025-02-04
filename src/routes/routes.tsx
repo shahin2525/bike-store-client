@@ -5,6 +5,8 @@ import About from "../pages/about/About";
 import AllProducts from "../pages/allProducts/AllProducts";
 import ProductDetails from "../pages/productDetails/ProductDetails";
 import Login from "../pages/login/Login";
+import Checkout from "../pages/checkout/Checkout";
+import ProtectedRoute from "./ProtectedRoute";
 
 export const router = createBrowserRouter([
   {
@@ -32,5 +34,13 @@ export const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/checkout",
+    element: (
+      <ProtectedRoute>
+        <Checkout></Checkout>
+      </ProtectedRoute>
+    ),
   },
 ]);
