@@ -1,8 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 // import { RootState } from "@reduxjs/toolkit/query";
+type TAuthData = {
+  email: string;
+  role: string;
+};
+type TAuthUser = {
+  data: TAuthData;
+  iat: string;
+  exp: string;
+};
 export interface TAuthState {
-  user: null | object;
+  user: null | TAuthUser;
   token: string | null;
 }
 
@@ -16,8 +25,11 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload;
-      state.token = action.payload;
+      // state.user = action.payload;
+      // state.token = action.payload;
+      const { user, token } = action.payload;
+      state.user = user;
+      state.token = token;
     },
     logout: (state) => {
       state.user = null;

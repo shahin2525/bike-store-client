@@ -1,41 +1,50 @@
 import { Layout, Menu, MenuProps } from "antd";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../../../redux/hooks";
+import { selectCurrentUser } from "../../../redux/feature/auth/authSlice";
 
 const { Sider } = Layout;
 const adminItems: MenuProps["items"] = [
   {
-    key: "create-product",
-    label: <NavLink to="admin/create-product">Create Product</NavLink>,
+    key: "Create Bike",
+    label: <NavLink to="create-bike">Create Bike</NavLink>,
   },
 
   {
-    key: "update-product",
-    label: <NavLink to="admin/update-product">Create Product</NavLink>,
+    key: "Update Bike",
+    label: <NavLink to="update-bike">Update Bike</NavLink>,
+  },
+  {
+    key: "Delete Bike",
+    label: <NavLink to="delete-bike">delete Bike</NavLink>,
   },
   {
     key: "deactivate-customer",
-    label: <NavLink to="admin/deactivate-customer">Create Product</NavLink>,
+    label: <NavLink to="deactivate-customer">Deactivate Customer</NavLink>,
   },
 ];
 
 const customerItems: MenuProps["items"] = [
   {
-    key: "create-order",
-    label: <NavLink to="customer/create-order">Create Product</NavLink>,
+    key: "Create Order",
+    label: <NavLink to="create-order">Create Order</NavLink>,
   },
 
   {
-    key: "update-password",
-    label: <NavLink to="customer/update-password">Change Password</NavLink>,
+    key: "Update Password",
+    label: <NavLink to="update-password">Change Password</NavLink>,
   },
   {
     key: "order-cancel",
-    label: <NavLink to="order/order-cancel">Order Cancle</NavLink>,
+    label: <NavLink to="order-cancel">Order Cancel</NavLink>,
   },
 ];
 
 const Sidebar = () => {
-  const role = "admin";
+  // const role = "admin";
+  const user = useAppSelector(selectCurrentUser);
+  const role = user?.data?.role;
+
   const UserRole = {
     Admin: "admin",
     Customer: "customer",
