@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Row } from "antd";
 import { FieldValues, useForm } from "react-hook-form";
 import { useLoginMutation } from "../../redux/feature/auth/authApi";
 import { verifyToken } from "../../utils/verifyToken";
@@ -25,31 +25,26 @@ const Login = () => {
   });
   const onSubmit = async (data: FieldValues) => {
     console.log(data);
-    // try {
-    //   const userInfo = {
-    //     email: data.email,
-    //     password: data.password,
-    //   };
-    //   const res = await login(userInfo).unwrap();
-    //   const user = verifyToken(res?.data);
-    //   console.log(user);
+    try {
+      const userInfo = {
+        email: data.email,
+        password: data.password,
+      };
+      const res = await login(userInfo).unwrap();
+      const user = verifyToken(res?.data);
+      console.log(user);
 
-    //   dispatch(setUser({ user: user, token: res?.data }));
+      dispatch(setUser({ user: user, token: res?.data }));
 
-    //   navigate(location?.state ? location.state : "/");
-    // } catch (error) {
-    //   console.log(error);
-    //   setError(error);
-    // }
+      navigate(location?.state ? location.state : "/");
+    } catch (error) {
+      console.log(error);
+      setError(error);
+    }
   };
   return (
-    <div style={{ margin: "20px" }}>
-      <PHForm onSubmit={handleSubmit(onSubmit)}>
-        {/* <label htmlFor="">Id:</label>
-        <input type="text" {...register("email")} />
-        <br /> */}
-        {/* <label htmlFor="">Password:</label> */}
-        {/* <input type="text" {...register("password")} /> */}
+    <Row justify="center" align="middle" style={{ height: "100vh" }}>
+      <PHForm onSubmit={onSubmit}>
         <PHInput type={"text"} name="email" label="Email" />
         <PHInput type={"text"} name="password" label="Password" />
         {error && (
@@ -59,7 +54,7 @@ const Login = () => {
         )}
         <Button htmlType="submit">Submit</Button>
       </PHForm>
-    </div>
+    </Row>
   );
 };
 
