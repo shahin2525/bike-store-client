@@ -1,7 +1,8 @@
-import { Col, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import { useGetAllBikeQuery } from "../../../redux/feature/bike/bikApi";
 import { TBike } from "../../../types/bike.type";
 import FeatureCard from "./FeatureCard";
+import { Link } from "react-router-dom";
 
 const Features = () => {
   const { data, isLoading, isFetching } = useGetAllBikeQuery(undefined);
@@ -19,25 +20,34 @@ const Features = () => {
     </p>;
   }
   return (
-    <Col>
-      {/* <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
-        {data?.data?.map((bike: TBike) => (
-          <FeatureCard key={bike._id} bike={bike}></FeatureCard>
-        ))}
-      </Col> */}
+    <div style={{ marginTop: "16px" }}>
       <Row gutter={4}>
-        {data?.data?.slice(0, 6).map((bike: TBike) => (
-          <Col
-            key={bike._id}
-            xs={24} // 1 card per row on small screens
-            sm={12} // 2 cards per row on medium screens
-            lg={8} // 3 cards per row on large screens
-          >
-            <FeatureCard bike={bike} />
+        {data?.data?.map((bike: TBike) => (
+          <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+            <FeatureCard key={bike._id} bike={bike}></FeatureCard>
           </Col>
         ))}
       </Row>
-    </Col>
+      {/* <div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-2"
+        style={{ marginTop: "12px" }}
+      >
+        {data?.data?.map((bike: TBike) => (
+          <FeatureCard key={bike._id} bike={bike}></FeatureCard>
+        ))}
+      </div> */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Button type="primary" style={{ margin: "14px" }}>
+          <Link to="all-products"> View All</Link>
+        </Button>
+      </div>
+    </div>
   );
 };
 
