@@ -5,7 +5,9 @@ import { TBike } from "../../types/bike.type";
 import { useEffect } from "react";
 
 const AllProducts = () => {
-  const { data, isFetching } = useGetAllBikeQuery(undefined);
+  const { data, isFetching } = useGetAllBikeQuery([
+    { name: "brand", value: "Road Runner" },
+  ]);
 
   useEffect(() => {
     if (isFetching) {
