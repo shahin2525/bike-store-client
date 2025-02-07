@@ -1,5 +1,5 @@
-import { Button, Row } from "antd";
-import { FieldValues, useForm } from "react-hook-form";
+import { Button, Col, Flex } from "antd";
+import { FieldValues } from "react-hook-form";
 import { useLoginMutation } from "../../redux/feature/auth/authApi";
 import { verifyToken } from "../../utils/verifyToken";
 import { useAppDispatch } from "../../redux/hooks";
@@ -8,6 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import PHForm from "../../components/form/PHForm";
 import PHInput from "../../components/form/PHInput";
+import { toast } from "sonner";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -17,13 +18,14 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      email: "samin@s.com",
-      password: "user1234",
-    },
-  });
+  const defaultValues = {
+    email: "samin@s.com",
+    password: "user1234",
+  };
+
   const onSubmit = async (data: FieldValues) => {
+    // const toastId = toast.loading("logging user", { duration: 2000 });
+    const toastId = toast.loading("logging user", { duration: 2000 });
     console.log(data);
     try {
       const userInfo = {
@@ -35,6 +37,7 @@ const Login = () => {
       console.log(user);
 
       dispatch(setUser({ user: user, token: res?.data }));
+      toast.success("user login successfully", { id: toastId, duration: 2000 });
 
       navigate(location?.state ? location.state : "/");
     } catch (error) {
@@ -43,18 +46,29 @@ const Login = () => {
     }
   };
   return (
-    <Row justify="center" align="middle" style={{ height: "100vh" }}>
-      <PHForm onSubmit={onSubmit}>
-        <PHInput type={"text"} name="email" label="Email" />
-        <PHInput type={"text"} name="password" label="Password" />
-        {error && (
-          <p style={{ color: "red", fontSize: "20px" }}>
-            {error?.data?.message || "An error occurred"}
-          </p>
-        )}
-        <Button htmlType="submit">Submit</Button>
-      </PHForm>
-    </Row>
+    // <Row justify="center" align="middle" style={{ height: "100vh" }}>
+    //   <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
+    //     <PHInput type={"text"} name="email" label="Email" />
+    //     <PHInput type={"text"} name="password" label="Password" />
+    //     {error && (
+    //       <p style={{ color: "red", fontSize: "20px" }}>
+    //         {error?.data?.message || "An error occurred"}
+    //       </p>
+    //     )}
+    //     <Button htmlType="submit">Submit</Button>
+    //   </PHForm>
+    // </Row> style={{ height: "100vh" }}
+    <Flex align="center" justify="center" style={{ marginTop: "30px" }}>
+      <Col span={6}>
+        <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
+          <PHInput type="text" name="email" label="Email" />
+
+          <PHInput type="text" name="password" label="Password" />
+
+          <Button htmlType="submit">submit</Button>
+        </PHForm>
+      </Col>
+    </Flex>
   );
 };
 

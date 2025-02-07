@@ -1,11 +1,9 @@
-import { Card, Image } from "antd";
 import { TBike } from "../../../types/bike.type";
 type FeatureCardProps = {
   bike: TBike;
 };
 
 const FeatureCard = ({ bike }: FeatureCardProps) => {
-  console.log(bike.bikeImage);
   const { bikeImage, description, brand } = bike;
   return (
     // <Card
