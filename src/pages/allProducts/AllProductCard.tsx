@@ -1,5 +1,6 @@
 import { Button, Card } from "antd";
 import { TBike } from "../../types/bike.type";
+import { Link } from "react-router-dom";
 const { Meta } = Card;
 
 type AllProductCardProps = {
@@ -7,7 +8,7 @@ type AllProductCardProps = {
 };
 const AllProductCard = ({ bike }: AllProductCardProps) => {
   console.log(bike);
-  const { name, brand, model, category, price } = bike;
+  const { name, brand, model, category, price, _id } = bike;
   return (
     <Card
       style={{ width: 300 }}
@@ -28,7 +29,9 @@ const AllProductCard = ({ bike }: AllProductCardProps) => {
             <p className="font-bold text-black">Category: {category}</p>
             <p className="font-bold text-black">Price: {price}$</p>
             <div style={{ marginTop: "8px" }}>
-              <Button type="primary">Product Details</Button>
+              <Button type="primary">
+                <Link to={`/product-details/${_id}`}>Product Details</Link>
+              </Button>
             </div>
           </>
         }
