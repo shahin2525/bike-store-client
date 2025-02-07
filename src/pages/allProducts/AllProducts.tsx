@@ -23,9 +23,14 @@ const AllProducts = () => {
   }
   return (
     <div>
-      {data?.data?.map((bike: TBike) => (
-        <AllProductCard key={bike._id} bike={bike}></AllProductCard>
-      ))}
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3"
+        style={{ marginTop: "34px", marginBottom: "20px" }}
+      >
+        {data?.data?.map((bike: TBike) => (
+          <AllProductCard key={bike._id} bike={bike}></AllProductCard>
+        ))}
+      </div>
     </div>
   );
 };
