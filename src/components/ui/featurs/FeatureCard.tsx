@@ -6,19 +6,9 @@ type FeatureCardProps = {
 const FeatureCard = ({ bike }: FeatureCardProps) => {
   const { bikeImage, description, brand } = bike;
   return (
-    // <Card
-    //   hoverable
-    //   style={{ width: 400 }}
-    //   cover={
-    //     <div style={imageContainerStyle}>
-    //         <img alt="example" src={bikeImage} />
-    //         <div style={brandOverlayStyle}>{brand}</div>
-    //     </div>
-    //   }
-    // ></Card>
     <div
       className=" rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900"
-      style={{ width: "400px", marginBottom: "10px" }}
+      style={{ maxWidth: "400px", marginBottom: "10px" }}
     >
       <img
         src={bikeImage}

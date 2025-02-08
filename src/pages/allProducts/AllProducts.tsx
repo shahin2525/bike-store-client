@@ -53,7 +53,7 @@ const AllProducts = () => {
     });
   };
   return (
-    <div className="mt-5" style={{ marginTop: "20px" }}>
+    <div className="mt-5" style={{ marginTop: "20px", padding: "0px 10px" }}>
       <div className="lg:flex items-center justify-center gap-2">
         <Search
           style={{ width: "200px" }}

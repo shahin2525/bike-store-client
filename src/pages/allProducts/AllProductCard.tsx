@@ -11,7 +11,7 @@ const AllProductCard = ({ bike }: AllProductCardProps) => {
   const { name, brand, model, category, price, _id } = bike;
   return (
     <Card
-      style={{ width: 300 }}
+      style={{ maxWidth: 300 }}
       cover={
         <img
           alt="example"

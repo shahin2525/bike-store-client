@@ -6,21 +6,27 @@ import { selectCurrentUser } from "../../../redux/feature/auth/authSlice";
 const { Sider } = Layout;
 const adminItems: MenuProps["items"] = [
   {
-    key: "Create Bike",
-    label: <NavLink to="create-bike">Create Bike</NavLink>,
-  },
+    label: "Admin Management",
+    type: "group",
+    children: [
+      {
+        key: "Create Bike",
+        label: <NavLink to="create-bike">Create Bike</NavLink>,
+      },
 
-  {
-    key: "Update Bike",
-    label: <NavLink to="update-bike">Update Bike</NavLink>,
-  },
-  {
-    key: "Delete Bike",
-    label: <NavLink to="delete-bike">delete Bike</NavLink>,
-  },
-  {
-    key: "deactivate-customer",
-    label: <NavLink to="deactivate-customer">Deactivate Customer</NavLink>,
+      {
+        key: "Update Bike",
+        label: <NavLink to="update-bike">Update Bike</NavLink>,
+      },
+      {
+        key: "Delete Bike",
+        label: <NavLink to="delete-bike">delete Bike</NavLink>,
+      },
+      {
+        key: "deactivate-customer",
+        label: <NavLink to="deactivate-customer">Deactivate Customer</NavLink>,
+      },
+    ],
   },
 ];
 
@@ -64,7 +70,7 @@ const Sidebar = () => {
   }
 
   return (
-    <Sider>
+    <Sider breakpoint="lg" collapsedWidth="0">
       <div
         style={{
           color: "white",

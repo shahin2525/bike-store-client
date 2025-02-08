@@ -14,7 +14,7 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
   const [error, setError] = useState("");
-  console.log(error?.data?.message);
+  console.log(error);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -66,6 +66,11 @@ const Login = () => {
           <PHInput type="text" name="password" label="Password" />
 
           <Button htmlType="submit">submit</Button>
+          {error && (
+            <p style={{ color: "red", fontSize: "20px" }}>
+              {error?.data?.message || "An error occurred"}
+            </p>
+          )}
         </PHForm>
       </Col>
     </Flex>

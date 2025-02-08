@@ -20,7 +20,7 @@ const Features = () => {
     </p>;
   }
   return (
-    <div style={{ marginTop: "16px" }}>
+    <div style={{ marginTop: "16px", padding: "0px 10px" }}>
       {/* <Row  gutter={4}>
         {data?.data?.map((bike: TBike) => (
           <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>

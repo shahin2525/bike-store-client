@@ -7,9 +7,14 @@ const bikeApi = baseApi.injectEndpoints({
       query: (args) => {
         const params = new URLSearchParams();
 
-        args.forEach((arg: TQueryParam) =>
-          params.append(arg.name, arg.value as string)
-        );
+        // args.forEach((arg: TQueryParam) =>
+        //   params.append(arg.name, arg.value as string)
+        // );
+        if (args) {
+          args.forEach((item: TQueryParam) => {
+            params.append(item.name, item.value as string);
+          });
+        }
         return {
           url: "/api/products",
           method: "GET",
@@ -17,7 +22,17 @@ const bikeApi = baseApi.injectEndpoints({
         };
       },
     }),
+
+    // get single bike
+
+    getSingleBike: builder.query({
+      // note: an optional `queryFn` may be used in place of `query`
+      query: (id) => ({
+        url: `/api/products/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetAllBikeQuery } = bikeApi;
+export const { useGetAllBikeQuery, useGetSingleBikeQuery } = bikeApi;
