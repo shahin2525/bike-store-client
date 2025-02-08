@@ -12,6 +12,7 @@ import UpdateBike from "../components/ui/admin/bike/UpdateBike";
 import DeleteBike from "../components/ui/admin/bike/DeleteBike";
 import CreateOrder from "../components/ui/user/CreateOrder";
 import UpdatePassword from "../components/ui/user/UpdatePassword";
+import Register from "../pages/register/Register";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "/checkout/:product",

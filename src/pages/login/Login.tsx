@@ -4,7 +4,7 @@ import { useLoginMutation } from "../../redux/feature/auth/authApi";
 import { verifyToken } from "../../utils/verifyToken";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/feature/auth/authSlice";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import PHForm from "../../components/form/PHForm";
 import PHInput from "../../components/form/PHInput";
@@ -46,18 +46,6 @@ const Login = () => {
     }
   };
   return (
-    // <Row justify="center" align="middle" style={{ height: "100vh" }}>
-    //   <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
-    //     <PHInput type={"text"} name="email" label="Email" />
-    //     <PHInput type={"text"} name="password" label="Password" />
-    //     {error && (
-    //       <p style={{ color: "red", fontSize: "20px" }}>
-    //         {error?.data?.message || "An error occurred"}
-    //       </p>
-    //     )}
-    //     <Button htmlType="submit">Submit</Button>
-    //   </PHForm>
-    // </Row> style={{ height: "100vh" }}
     <Flex align="center" justify="center" style={{ marginTop: "30px" }}>
       <Col span={6}>
         <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
@@ -72,6 +60,15 @@ const Login = () => {
             </p>
           )}
         </PHForm>
+        <p
+          className="flex justify-center items-center"
+          style={{ marginTop: "10px", fontSize: "16px" }}
+        >
+          <span> Do not have an Account Please</span>
+          <Link to="/register">
+            <Button type="primary">Register</Button>
+          </Link>
+        </p>
       </Col>
     </Flex>
   );
