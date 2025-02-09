@@ -5,6 +5,11 @@ import { toast } from "sonner";
 import { useCreateBikeMutation } from "../../../../redux/feature/bike/bikApi";
 import { TResponse } from "../../../../types/global.types";
 import PHInput from "../../../form/BSInput";
+import BSSelect from "../../../form/BSSelect";
+import {
+  bikeCategoriesOptions,
+  brandsOptions,
+} from "../../../../constants/global.const";
 
 const CreateBike = () => {
   const [createBike] = useCreateBikeMutation();
@@ -30,13 +35,20 @@ const CreateBike = () => {
     console.log(bikeData);
   };
   return (
-    <Flex justify="center" align="center">
+    <Flex justify="center" align="center" style={{ marginTop: "30px" }}>
       <Col span={6}>
         <PHForm
           onSubmit={onsubmit}
           // resolver={zodResolver(academicSemesterSchema)}
         >
-          <PHInput type="text" name="" />
+          <PHInput label="Name" type="text" name="name" />
+          <BSSelect label="Brand" name="brand" options={brandsOptions} />
+          <PHInput label="Price" type="text" name="price" />
+          <BSSelect
+            label="Category"
+            name="category"
+            options={bikeCategoriesOptions}
+          />
           <Button htmlType="submit">submit2</Button>
         </PHForm>
       </Col>

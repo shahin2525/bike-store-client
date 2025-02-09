@@ -6,6 +6,7 @@ import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
 import { useCreateUserMutation } from "../../redux/feature/auth/authApi";
 import { useState } from "react";
+import { TResponse } from "../../types/global.types";
 
 const Register = () => {
   const [register] = useCreateUserMutation();
@@ -28,7 +29,7 @@ const Register = () => {
         email: data.email,
         password: data.password,
       };
-      const res = await register(userInfo).unwrap();
+      const res = (await register(userInfo).unwrap()) as TResponse<any>;
       console.log(res);
       toast.success("user login successfully", { id: toastId, duration: 2000 });
       // <Navigate replace to="/login" />;
