@@ -27,6 +27,7 @@ const ProductDetails = () => {
   const bike = data?.data;
   console.log("bike", bike);
   const {
+    bikeImage,
     stock,
     name,
     brand,
@@ -44,12 +45,7 @@ const ProductDetails = () => {
     >
       <Card
         style={{ width: 600 }}
-        cover={
-          <img
-            alt="example"
-            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-          />
-        }
+        cover={<img alt="example" src={bikeImage} />}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
           <div>

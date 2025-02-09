@@ -8,16 +8,11 @@ type AllProductCardProps = {
 };
 const AllProductCard = ({ bike }: AllProductCardProps) => {
   console.log(bike);
-  const { name, brand, model, category, price, _id } = bike;
+  const { bikeImage, name, brand, model, category, price, _id } = bike;
   return (
     <Card
       style={{ maxWidth: 300 }}
-      cover={
-        <img
-          alt="example"
-          src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
-        />
-      }
+      cover={<img alt="example" src={bikeImage} />}
     >
       <Meta
         className="text-black"

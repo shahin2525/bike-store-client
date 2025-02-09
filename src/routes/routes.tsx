@@ -7,12 +7,14 @@ import ProductDetails from "../pages/productDetails/ProductDetails";
 import Login from "../pages/login/Login";
 import Checkout from "../pages/checkout/Checkout";
 import ProtectedRoute from "./ProtectedRoute";
-import CreateBike from "../components/ui/admin/bike/CreateBike";
-import UpdateBike from "../components/ui/admin/bike/UpdateBike";
-import DeleteBike from "../components/ui/admin/bike/DeleteBike";
+
 import CreateOrder from "../components/ui/user/CreateOrder";
 import UpdatePassword from "../components/ui/user/UpdatePassword";
 import Register from "../pages/register/Register";
+import ManageBike from "../pages/admin/manage-bike/ManageBike";
+import ManageUser from "../pages/admin/manage-user/ManageUser";
+import ManageOrder from "../pages/admin/manage-order/ManageOrder";
+import CreateBike from "../pages/admin/CreateBike";
 
 export const router = createBrowserRouter([
   {
@@ -43,19 +45,28 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+
       {
-        path: "update-bike",
+        path: "manage-bike",
         element: (
           <ProtectedRoute>
-            <UpdateBike />
+            <ManageBike />
           </ProtectedRoute>
         ),
       },
       {
-        path: "delete-bike",
+        path: "manage-user",
         element: (
           <ProtectedRoute>
-            <DeleteBike />
+            <ManageUser />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "manage-order",
+        element: (
+          <ProtectedRoute>
+            <ManageOrder />
           </ProtectedRoute>
         ),
       },

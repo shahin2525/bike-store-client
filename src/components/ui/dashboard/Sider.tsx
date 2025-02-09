@@ -15,16 +15,17 @@ const adminItems: MenuProps["items"] = [
       },
 
       {
-        key: "Update Bike",
-        label: <NavLink to="update-bike">Update Bike</NavLink>,
+        key: "Manage Bike",
+        label: <NavLink to="manage-bike">Manage Bike</NavLink>,
+      },
+
+      {
+        key: "Manage User",
+        label: <NavLink to="manage-user">Manage User</NavLink>,
       },
       {
-        key: "Delete Bike",
-        label: <NavLink to="delete-bike">delete Bike</NavLink>,
-      },
-      {
-        key: "deactivate-customer",
-        label: <NavLink to="deactivate-customer">Deactivate Customer</NavLink>,
+        key: "Manage Order",
+        label: <NavLink to="manage-order">Manage Order</NavLink>,
       },
     ],
   },
