@@ -32,7 +32,23 @@ const bikeApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    // create bike
+
+    createBike: builder.mutation({
+      // note: an optional `queryFn` may be used in place of `query`
+      query: (bikeInfo) => ({
+        url: "/api/products/",
+        method: "POST",
+        body: bikeInfo,
+      }),
+    }),
+
+    //
   }),
 });
 
-export const { useGetAllBikeQuery, useGetSingleBikeQuery } = bikeApi;
+export const {
+  useGetAllBikeQuery,
+  useGetSingleBikeQuery,
+  useCreateBikeMutation,
+} = bikeApi;

@@ -2,16 +2,18 @@ import { Button, Col, Flex } from "antd";
 import PHForm from "../../../form/PHForm";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
+import { useCreateBikeMutation } from "../../../../redux/feature/bike/bikApi";
 
 const CreateBike = () => {
-  const [addSemester] = useCreateSemesterMutation();
+  const [createBike] = useCreateBikeMutation();
   const onsubmit: SubmitHandler<FieldValues> = async (data) => {
     // console.log("data", Number(data.name) - 1);
+    console.log(data);
     const toastId = toast.loading("creating .....");
 
-    const semesterData = {};
+    const bikeData = {};
     try {
-      const res = await addSemester(semesterData);
+      const res = await createBike(bikeData);
       console.log(res);
       if (res?.error) {
         toast.error(res.error.data.message, { id: toastId });
