@@ -1,8 +1,10 @@
 import { Button, Col, Flex } from "antd";
-import PHForm from "../../../form/PHForm";
+import PHForm from "../../../form/BSForm";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import { toast } from "sonner";
 import { useCreateBikeMutation } from "../../../../redux/feature/bike/bikApi";
+import { TResponse } from "../../../../types/global.types";
+import PHInput from "../../../form/BSInput";
 
 const CreateBike = () => {
   const [createBike] = useCreateBikeMutation();
@@ -13,7 +15,7 @@ const CreateBike = () => {
 
     const bikeData = {};
     try {
-      const res = await createBike(bikeData);
+      const res = (await createBike(bikeData)) as TResponse<any>;
       console.log(res);
       if (res?.error) {
         toast.error(res.error.data.message, { id: toastId });
@@ -25,16 +27,17 @@ const CreateBike = () => {
       toast.error("something went wrong", { id: toastId });
     }
 
-    console.log(semesterData);
+    console.log(bikeData);
   };
   return (
     <Flex justify="center" align="center">
       <Col span={6}>
         <PHForm
           onSubmit={onsubmit}
-          resolver={zodResolver(academicSemesterSchema)}
+          // resolver={zodResolver(academicSemesterSchema)}
         >
-          <Button htmlType="submit">submit</Button>
+          <PHInput type="text" name="" />
+          <Button htmlType="submit">submit2</Button>
         </PHForm>
       </Col>
     </Flex>

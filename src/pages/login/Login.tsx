@@ -6,9 +6,10 @@ import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/feature/auth/authSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import PHForm from "../../components/form/PHForm";
-import PHInput from "../../components/form/PHInput";
+import PHForm from "../../components/form/BSForm";
+import PHInput from "../../components/form/BSInput";
 import { toast } from "sonner";
+import { TResponse } from "../../types/global.types";
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -25,25 +26,46 @@ const Login = () => {
 
   const onSubmit = async (data: FieldValues) => {
     // const toastId = toast.loading("logging user", { duration: 2000 });
-    const toastId = toast.loading("logging user", { duration: 2000 });
+    const toastId = toast.loading("Logging in");
     console.log(data);
     try {
       const userInfo = {
         email: data.email,
         password: data.password,
       };
-      const res = await login(userInfo).unwrap();
-      const user = verifyToken(res?.data);
-      console.log(user);
+      const res = (await login(userInfo).unwrap()) as TResponse<any>;
 
-      dispatch(setUser({ user: user, token: res?.data }));
-      toast.success("user login successfully", { id: toastId, duration: 2000 });
+      if (res?.error) {
+        toast.error(res.error.data.message, { id: toastId });
+      } else {
+        const user = verifyToken(res?.data);
+        console.log(user);
 
-      navigate(location?.state ? location.state : "/");
+        dispatch(setUser({ user: user, token: res?.data }));
+        toast.success("user login successfully", {
+          id: toastId,
+          duration: 2000,
+        });
+
+        navigate(location?.state ? location.state : "/");
+      }
     } catch (error) {
-      console.log(error);
-      setError(error);
+      toast.error("something went wrong", { id: toastId });
     }
+
+    //     */
+    //  try {
+    //       const res = (await createBike(bikeData)) as TResponse<any>;
+    //       console.log(res);
+    //       if (res?.error) {
+    //         toast.error(res.error.data.message, { id: toastId });
+    //       } else {
+    //         toast.success("semester create successfully", { id: toastId });
+    //       }
+    //       console.log(res);
+    //     } catch (error) {
+    //       toast.error("something went wrong", { id: toastId });
+    //     }
   };
   return (
     <Flex align="center" justify="center" style={{ marginTop: "30px" }}>
@@ -54,11 +76,6 @@ const Login = () => {
           <PHInput type="text" name="password" label="Password" />
 
           <Button htmlType="submit">submit</Button>
-          {error && (
-            <p style={{ color: "red", fontSize: "20px" }}>
-              {error?.data?.message || "An error occurred"}
-            </p>
-          )}
         </PHForm>
         <p
           className="flex justify-center items-center"

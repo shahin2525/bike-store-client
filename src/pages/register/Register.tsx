@@ -1,6 +1,6 @@
 import { Button, Col, Flex } from "antd";
-import PHForm from "../../components/form/PHForm";
-import PHInput from "../../components/form/PHInput";
+import PHForm from "../../components/form/BSForm";
+import PHInput from "../../components/form/BSInput";
 import { Link } from "react-router-dom";
 import { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
