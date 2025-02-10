@@ -32,7 +32,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     // toast.error(result?.error?.data?.message);
     console.log("baseQueryWithRefreshToken error");
   }
-  console.log(result);
+  // console.log(result);
   if (result?.error && result.error.status === 401) {
     console.log("send refresh token");
 

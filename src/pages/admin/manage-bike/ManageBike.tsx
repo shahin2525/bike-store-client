@@ -11,7 +11,7 @@ const ManageBike = () => {
     isLoading,
     isFetching,
   } = useGetAllBikeQuery(undefined);
-  console.log("bikeData", bikeData);
+  // console.log("bikeData", bikeData);
   const tableData = bikeData?.data?.map(
     ({ _id, model, name, brand }: TBike) => ({
       key: _id,
@@ -42,11 +42,13 @@ const ManageBike = () => {
       title: "Action",
       key: "x",
       render: (item) => {
-        console.log("item", item);
+        // console.log("item", item);
         return (
           <Space>
-            <Button>Update</Button>
-            <Button>Block</Button>
+            <Link to={`/update-bike/${item?.key}`}>
+              <Button type="primary">Update</Button>
+            </Link>
+            <Button type="primary">Delete Bike</Button>
           </Space>
         );
       },

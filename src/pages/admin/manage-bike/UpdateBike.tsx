@@ -7,8 +7,74 @@ import {
   bikeModelOptions,
   brandsOptions,
 } from "../../../constants/global.const";
+import { FieldValues, SubmitHandler } from "react-hook-form";
+import { toast } from "sonner";
+import { TResponse } from "../../../types/global.types";
+import {
+  useGetSingleBikeQuery,
+  useUpdateBikeMutation,
+} from "../../../redux/feature/bike/bikApi";
+import { useParams } from "react-router-dom";
+import { TBike } from "../../../types/bike.type";
 
 const UpdateBike = () => {
+  const [updateBike] = useUpdateBikeMutation();
+  const { id } = useParams();
+  const { data: singleBikeData } = useGetSingleBikeQuery(id);
+  const bike = singleBikeData?.data;
+  // console.log(bike);
+  const defaultData = {
+    bikeImage: bike?.bikeImage,
+
+    brand: bike?.brand,
+
+    category: bike?.category,
+
+    description: bike?.description,
+
+    model: bike?.model,
+
+    name: bike?.name,
+
+    price: bike?.price,
+
+    quantity: bike?.quantity,
+  };
+  console.log(defaultData);
+  const onsubmit: SubmitHandler<FieldValues> = async (data) => {
+    // console.log("data", Number(data.name) - 1);
+
+    const toastId = toast.loading("updating .....");
+
+    const bikeData = {
+      bikeImage: data?.bikeImage,
+
+      brand: data?.brand,
+
+      category: data?.category,
+
+      description: data?.description,
+
+      model: data?.model,
+
+      name: data?.name,
+
+      price: data?.price,
+
+      quantity: data?.quantity,
+    };
+    try {
+      const res = (await updateBike(bikeData)) as TResponse<any>;
+      console.log(res);
+      if (res?.error) {
+        toast.error(res.error.data.message, { id: toastId });
+      } else {
+        toast.success("bike updated successfully", { id: toastId });
+      }
+    } catch (error) {
+      toast.error("something went wrong", { id: toastId });
+    }
+  };
   return (
     <Row
       justify="center"
@@ -18,6 +84,8 @@ const UpdateBike = () => {
         <PHForm
           onSubmit={onsubmit}
           // resolver={zodResolver(academicSemesterSchema)}
+          // defaultValues={}
+          defaultValues={defaultData}
         >
           <Row gutter={4}>
             <Col

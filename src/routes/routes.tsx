@@ -15,6 +15,7 @@ import ManageBike from "../pages/admin/manage-bike/ManageBike";
 import ManageUser from "../pages/admin/manage-user/ManageUser";
 import ManageOrder from "../pages/admin/manage-order/ManageOrder";
 import CreateBike from "../pages/admin/CreateBike";
+import UpdateBike from "../pages/admin/manage-bike/UpdateBike";
 
 export const router = createBrowserRouter([
   {
@@ -87,15 +88,23 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/login",
+        path: "update-bike/:id",
+        element: (
+          <ProtectedRoute>
+            <UpdateBike />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/register",
+        path: "register",
         element: <Register />,
       },
       {
-        path: "/checkout/:product",
+        path: "checkout/:product",
         element: (
           <ProtectedRoute>
             <Checkout></Checkout>
