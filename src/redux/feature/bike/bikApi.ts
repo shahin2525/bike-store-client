@@ -7,9 +7,6 @@ const bikeApi = baseApi.injectEndpoints({
       query: (args) => {
         const params = new URLSearchParams();
 
-        // args.forEach((arg: TQueryParam) =>
-        //   params.append(arg.name, arg.value as string)
-        // );
         if (args) {
           args.forEach((item: TQueryParam) => {
             params.append(item.name, item.value as string);
@@ -21,6 +18,7 @@ const bikeApi = baseApi.injectEndpoints({
           params: params,
         };
       },
+      providesTags: ["bike"],
     }),
 
     // get single bike
@@ -40,6 +38,7 @@ const bikeApi = baseApi.injectEndpoints({
         method: "POST",
         body: bikeInfo,
       }),
+      invalidatesTags: ["bike"],
     }),
 
     // update bike
@@ -49,6 +48,7 @@ const bikeApi = baseApi.injectEndpoints({
         method: "PUT",
         body: args.data,
       }),
+      invalidatesTags: ["bike"],
     }),
     // delete bike
     deleteBike: builder.mutation({
@@ -56,6 +56,7 @@ const bikeApi = baseApi.injectEndpoints({
         url: `/api/products/${id}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["bike"],
     }),
     //
   }),

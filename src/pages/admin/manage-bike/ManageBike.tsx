@@ -5,6 +5,7 @@ import {
   useGetAllBikeQuery,
 } from "../../../redux/feature/bike/bikApi";
 import { TBike } from "../../../types/bike.type";
+import { toast } from "sonner";
 
 export type TTableData = Pick<TBike, "name" | "model" | "brand" | "_id">;
 
@@ -14,7 +15,8 @@ const ManageBike = () => {
     isLoading,
     isFetching,
   } = useGetAllBikeQuery(undefined);
-  const [deleteBike, { isError }] = useDeleteBikeMutation();
+  const [deleteBike, { isError, isLoading: deleteIsLoading }] =
+    useDeleteBikeMutation();
   console.log(isError);
   // console.log("bikeData", bikeData);
   const tableData = bikeData?.data?.map(
@@ -48,15 +50,27 @@ const ManageBike = () => {
       key: "x",
       render: (item) => {
         // console.log("item", item);
-        const handleDeleteBike = (id: string) => {
-          deleteBike(id);
+        const handleDeleteBike = async (id: string) => {
+          const toastId = toast.loading("deleting .....");
+          try {
+            const res = await deleteBike(id).unwrap();
+            if (res?.error) {
+              toast.error(res.error.data.message, { id: toastId });
+            } else {
+              toast.success("bike deleting successfully", { id: toastId });
+            }
+          } catch (error) {}
         };
         return (
           <Space>
             <Link to={`/update-bike/${item?.key}`}>
               <Button type="primary">Update</Button>
             </Link>
-            <Button type="primary" onClick={() => handleDeleteBike(item?.key)}>
+            <Button
+              type="primary"
+              onClick={() => handleDeleteBike(item?.key)}
+              disabled={deleteIsLoading}
+            >
               Delete Bike
             </Button>
           </Space>
