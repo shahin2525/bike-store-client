@@ -7,7 +7,7 @@ import {
   bikeModelOptions,
   brandsOptions,
 } from "../../../constants/global.const";
-import { FieldValues, SubmitHandler } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { TResponse } from "../../../types/global.types";
 import {
@@ -15,32 +15,53 @@ import {
   useUpdateBikeMutation,
 } from "../../../redux/feature/bike/bikApi";
 import { useParams } from "react-router-dom";
-import { TBike } from "../../../types/bike.type";
+
+import { useEffect } from "react";
 
 const UpdateBike = () => {
   const [updateBike] = useUpdateBikeMutation();
   const { id } = useParams();
   const { data: singleBikeData } = useGetSingleBikeQuery(id);
   const bike = singleBikeData?.data;
-  // console.log(bike);
-  const defaultData = {
-    bikeImage: bike?.bikeImage,
+  const formMethods = useForm<{
+    bikeImage: string;
+    brand: string;
+    category: string;
+    description: string;
+    model: string;
+    name: string;
+    price: number;
+    quantity: number;
+  }>({
+    defaultValues: {
+      bikeImage: "",
+      brand: "",
+      category: "",
+      description: "",
+      model: "",
+      name: "",
+      price: 0,
+      quantity: 0,
+    },
+  });
 
-    brand: bike?.brand,
+  const { reset } = formMethods;
 
-    category: bike?.category,
-
-    description: bike?.description,
-
-    model: bike?.model,
-
-    name: bike?.name,
-
-    price: bike?.price,
-
-    quantity: bike?.quantity,
-  };
-  console.log(defaultData);
+  // ✅ Reset form when bike data is fetched
+  useEffect(() => {
+    if (bike) {
+      reset({
+        bikeImage: bike.bikeImage,
+        brand: bike.brand,
+        category: bike.category,
+        description: bike.description,
+        model: bike.model,
+        name: bike.name,
+        price: bike.price,
+        quantity: bike.quantity,
+      });
+    }
+  }, [bike, reset]);
   const onsubmit: SubmitHandler<FieldValues> = async (data) => {
     // console.log("data", Number(data.name) - 1);
 
@@ -81,12 +102,7 @@ const UpdateBike = () => {
       style={{ marginTop: "30px", marginBottom: "20px", padding: "0px 10px" }}
     >
       <Col span={24}>
-        <PHForm
-          onSubmit={onsubmit}
-          // resolver={zodResolver(academicSemesterSchema)}
-          // defaultValues={}
-          defaultValues={defaultData}
-        >
+        <PHForm onSubmit={onsubmit} formMethods={formMethods}>
           <Row gutter={4}>
             <Col
               span={24}
