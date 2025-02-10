@@ -50,6 +50,13 @@ const bikeApi = baseApi.injectEndpoints({
         body: args.data,
       }),
     }),
+    // delete bike
+    deleteBike: builder.mutation({
+      query: (id) => ({
+        url: `/api/products/${id}`,
+        method: "DELETE",
+      }),
+    }),
     //
   }),
 });
@@ -59,4 +66,5 @@ export const {
   useGetSingleBikeQuery,
   useCreateBikeMutation,
   useUpdateBikeMutation,
+  useDeleteBikeMutation,
 } = bikeApi;

@@ -1,6 +1,9 @@
 import { Button, Space, Table, TableColumnsType } from "antd";
 import { Link } from "react-router-dom";
-import { useGetAllBikeQuery } from "../../../redux/feature/bike/bikApi";
+import {
+  useDeleteBikeMutation,
+  useGetAllBikeQuery,
+} from "../../../redux/feature/bike/bikApi";
 import { TBike } from "../../../types/bike.type";
 
 export type TTableData = Pick<TBike, "name" | "model" | "brand" | "_id">;
@@ -11,6 +14,8 @@ const ManageBike = () => {
     isLoading,
     isFetching,
   } = useGetAllBikeQuery(undefined);
+  const [deleteBike, { isError }] = useDeleteBikeMutation();
+  console.log(isError);
   // console.log("bikeData", bikeData);
   const tableData = bikeData?.data?.map(
     ({ _id, model, name, brand }: TBike) => ({
@@ -43,12 +48,17 @@ const ManageBike = () => {
       key: "x",
       render: (item) => {
         // console.log("item", item);
+        const handleDeleteBike = (id: string) => {
+          deleteBike(id);
+        };
         return (
           <Space>
             <Link to={`/update-bike/${item?.key}`}>
               <Button type="primary">Update</Button>
             </Link>
-            <Button type="primary">Delete Bike</Button>
+            <Button type="primary" onClick={() => handleDeleteBike(item?.key)}>
+              Delete Bike
+            </Button>
           </Space>
         );
       },
