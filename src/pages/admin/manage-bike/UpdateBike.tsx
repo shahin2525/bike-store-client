@@ -19,8 +19,9 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 const UpdateBike = () => {
-  const [updateBike] = useUpdateBikeMutation();
   const { id } = useParams();
+  const [updateBike, { isError }] = useUpdateBikeMutation();
+  console.log(isError);
   const { data: singleBikeData } = useGetSingleBikeQuery(id);
   const bike = singleBikeData?.data;
   const formMethods = useForm<{
@@ -67,25 +68,46 @@ const UpdateBike = () => {
 
     const toastId = toast.loading("updating .....");
 
-    const bikeData = {
-      bikeImage: data?.bikeImage,
+    // const bikeData = {
+    //   bikeImage: data?.bikeImage,
 
-      brand: data?.brand,
+    //   brand: data?.brand,
 
-      category: data?.category,
+    //   category: data?.category,
 
-      description: data?.description,
+    //   description: data?.description,
 
-      model: data?.model,
+    //   model: data?.model,
 
-      name: data?.name,
+    //   name: data?.name,
 
-      price: data?.price,
+    //   price: data?.price,
 
-      quantity: data?.quantity,
+    //   quantity: data?.quantity,
+    // };
+
+    const updateData = {
+      id: bike?._id,
+      data: {
+        bikeImage: data?.bikeImage,
+
+        brand: data?.brand,
+
+        category: data?.category,
+
+        description: data?.description,
+
+        model: data?.model,
+
+        name: data?.name,
+
+        price: data?.price,
+
+        quantity: data?.quantity,
+      },
     };
     try {
-      const res = (await updateBike(bikeData)) as TResponse<any>;
+      const res = (await updateBike(updateData)) as TResponse<any>;
       console.log(res);
       if (res?.error) {
         toast.error(res.error.data.message, { id: toastId });
