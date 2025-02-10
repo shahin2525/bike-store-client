@@ -106,9 +106,10 @@ const UpdateBike = () => {
         quantity: data?.quantity,
       },
     };
+
     try {
       const res = (await updateBike(updateData)) as TResponse<any>;
-      console.log(res);
+
       if (res?.error) {
         toast.error(res.error.data.message, { id: toastId });
       } else {
