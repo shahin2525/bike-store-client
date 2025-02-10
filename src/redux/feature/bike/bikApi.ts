@@ -44,10 +44,10 @@ const bikeApi = baseApi.injectEndpoints({
 
     // update bike
     updateBike: builder.mutation({
-      query: ({ id, ...bikeInfo }) => ({
-        url: `/api/products/${id}`,
+      query: (args) => ({
+        url: `/api/products/${args.id}`,
         method: "PUT",
-        body: bikeInfo,
+        body: args.data,
       }),
     }),
     //
