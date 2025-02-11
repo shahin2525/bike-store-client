@@ -54,8 +54,8 @@ const CreateBike = () => {
       } else {
         toast.success("bike create successfully", { id: toastId });
       }
-    } catch (error) {
-      toast.error("something went wrong", { id: toastId });
+    } catch (error: any) {
+      toast.error(error.data.message, { id: toastId });
     }
   };
   return (

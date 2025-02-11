@@ -6,7 +6,7 @@ import {
   useGetAllUserQuery,
 } from "../../../redux/feature/user/userApi";
 import { toast } from "sonner";
-import { Link } from "react-router-dom";
+
 export type TTableData = Pick<TUser, "name" | "email" | "role" | "_id">;
 const ManageUser = () => {
   const {
@@ -78,7 +78,9 @@ const ManageUser = () => {
             } else {
               toast.success("user deleting successfully", { id: toastId });
             }
-          } catch (error) {}
+          } catch (error: any) {
+            toast.error(error.data.message, { id: toastId });
+          }
         };
         //deactivate user
         const handleDeactivateUser = async (id: string) => {
@@ -97,7 +99,9 @@ const ManageUser = () => {
             } else {
               toast.success("user deactivated successfully", { id: toastId });
             }
-          } catch (error) {}
+          } catch (error: any) {
+            toast.error(error.data.message, { id: toastId });
+          }
         };
 
         return (
@@ -107,17 +111,17 @@ const ManageUser = () => {
               onClick={() => handleDeactivateUser(item?.key)}
               disabled={blockIsLoading}
             >
-              Deactivate User
+              Deactivate Customer
             </Button>
-            <Link to={`/update-user/${item?.key}`}>
-              <Button type="primary">Update</Button>
-            </Link>
+            {/* <Link to={`/update-user/${item?.key}`}>
+              <Button type="primary">Update Customer</Button>
+            </Link> */}
             <Button
               type="primary"
               onClick={() => handleDeleteUser(item?.key)}
               disabled={deleteIsLoading}
             >
-              Delete User
+              Delete Customer
             </Button>
           </Space>
         );

@@ -13,13 +13,14 @@ export type TTableData = Pick<
 const ManageOrder = () => {
   const {
     data: orderData,
-    isLoading,
+
     isFetching,
   } = useGetAllOrderQuery(undefined);
   const [deleteOrder, { isLoading: deleteIsLoading }] =
     useDeleteOrderMutation();
 
-  const [updateOrder, { isLoading: blockIsLoading }] = useUpdateOrderMutation();
+  const [updateOrder, { isLoading: updateIsLoading }] =
+    useUpdateOrderMutation();
 
   // console.log("bikeData", bikeData);
   const tableData = orderData?.data?.map(
@@ -49,24 +50,6 @@ const ManageOrder = () => {
       dataIndex: "status",
     },
 
-    // {
-    //   title: "Action",
-    //   key: "x",
-    //   render: (item) => {
-    //     // console.log("item", item);
-    //     const handleDeleteUser = async (id: string) => {
-    //       const toastId = toast.loading("deleting .....");
-    //       try {
-    //         const res = await deleteBike(id).unwrap();
-    //         if (res?.error) {
-    //           toast.error(res.error.data.message, { id: toastId });
-    //         } else {
-    //           toast.success("bike deleting successfully", { id: toastId });
-    //         }
-    //       } catch (error) {}
-
-    //     };
-
     {
       title: "Action",
       key: "x",
@@ -81,7 +64,9 @@ const ManageOrder = () => {
             } else {
               toast.success("order deleted successfully", { id: toastId });
             }
-          } catch (error) {}
+          } catch (error: any) {
+            toast.error(error.data.message, { id: toastId });
+          }
         };
         //deactivate user
         const handleUpdateOrder = async (id: string) => {
@@ -100,7 +85,9 @@ const ManageOrder = () => {
             } else {
               toast.success("order updated successfully", { id: toastId });
             }
-          } catch (error) {}
+          } catch (error: any) {
+            toast.error(error.data.message, { id: toastId });
+          }
         };
 
         return (
@@ -108,7 +95,7 @@ const ManageOrder = () => {
             <Button
               type="primary"
               onClick={() => handleUpdateOrder(item?.key)}
-              disabled={deleteIsLoading}
+              disabled={updateIsLoading}
             >
               Update Order status
             </Button>

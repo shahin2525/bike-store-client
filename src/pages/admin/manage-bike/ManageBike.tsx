@@ -12,7 +12,7 @@ export type TTableData = Pick<TBike, "name" | "model" | "brand" | "_id">;
 const ManageBike = () => {
   const {
     data: bikeData,
-    isLoading,
+
     isFetching,
   } = useGetAllBikeQuery(undefined);
   const [deleteBike, { isError, isLoading: deleteIsLoading }] =
@@ -59,26 +59,28 @@ const ManageBike = () => {
             } else {
               toast.success("bike deleting successfully", { id: toastId });
             }
-          } catch (error) {}
+          } catch (error: any) {
+            toast.error(error.data.message, { id: toastId });
+          }
         };
         return (
           <Space>
-            <Button
+            {/* <Button
               type="primary"
               onClick={() => handleDeleteBike(item?.key)}
               disabled={deleteIsLoading}
             >
               Deactivated User
-            </Button>
+            </Button> */}
             <Link to={`/update-bike/${item?.key}`}>
-              <Button type="primary">Update</Button>
+              <Button type="primary">Update Bike</Button>
             </Link>
             <Button
               type="primary"
               onClick={() => handleDeleteBike(item?.key)}
               disabled={deleteIsLoading}
             >
-              Delete User
+              Delete Bike
             </Button>
           </Space>
         );

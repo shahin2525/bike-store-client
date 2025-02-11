@@ -115,8 +115,8 @@ const UpdateBike = () => {
       } else {
         toast.success("bike updated successfully", { id: toastId });
       }
-    } catch (error) {
-      toast.error("something went wrong", { id: toastId });
+    } catch (error: any) {
+      toast.error(error.data.message, { id: toastId });
     }
   };
   return (
