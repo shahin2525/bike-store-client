@@ -58,6 +58,15 @@ const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["user"],
     }),
+    //deactivated user
+    deactivateUser: builder.mutation({
+      query: (id) => ({
+        url: `/api/admin/users/${id}/block`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["user"],
+    }),
+
     //
   }),
 });
@@ -72,4 +81,5 @@ export const {
   useGetSingleUserQuery,
   useUpdateUserMutation,
   useDeleteUserMutation,
+  useDeactivateUserMutation,
 } = userApi;

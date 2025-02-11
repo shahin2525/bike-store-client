@@ -1,6 +1,7 @@
 import { Button, Space, Table, TableColumnsType } from "antd";
 import { TUser } from "../../../types/user.type";
 import {
+  useDeactivateUserMutation,
   useDeleteUserMutation,
   useGetAllUserQuery,
 } from "../../../redux/feature/user/userApi";
@@ -13,9 +14,11 @@ const ManageUser = () => {
     isLoading,
     isFetching,
   } = useGetAllUserQuery(undefined);
-  const [deleteUser, { isError, isLoading: deleteIsLoading }] =
-    useDeleteUserMutation();
-  console.log(isError);
+  const [deleteUser, { isLoading: deleteIsLoading }] = useDeleteUserMutation();
+
+  const [deactivateUser, { isLoading: blockIsLoading }] =
+    useDeactivateUserMutation();
+
   // console.log("bikeData", bikeData);
   const tableData = userData?.data?.map(
     ({ _id, name, email, role }: TUser) => ({
@@ -77,8 +80,32 @@ const ManageUser = () => {
             }
           } catch (error) {}
         };
+        //deactivate user
+        const handleDeactivateUser = async (id: string) => {
+          const toastId = toast.loading("deactivating .....");
+          const deactivateData = {
+            id: id,
+            deactivate: true,
+          };
+          try {
+            const res = await deactivateUser(deactivateData).unwrap();
+            if (res?.error) {
+              toast.error(res.error.data.message, { id: toastId });
+            } else {
+              toast.success("user deactivated successfully", { id: toastId });
+            }
+          } catch (error) {}
+        };
+
         return (
           <Space>
+            <Button
+              type="primary"
+              onClick={() => handleDeactivateUser(item?.key)}
+              disabled={deleteIsLoading}
+            >
+              Deactivate User
+            </Button>
             <Link to={`/update-user/${item?.key}`}>
               <Button type="primary">Update</Button>
             </Link>
