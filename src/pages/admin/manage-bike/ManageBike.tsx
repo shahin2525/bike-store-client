@@ -63,6 +63,13 @@ const ManageBike = () => {
         };
         return (
           <Space>
+            <Button
+              type="primary"
+              onClick={() => handleDeleteBike(item?.key)}
+              disabled={deleteIsLoading}
+            >
+              Deactivated User
+            </Button>
             <Link to={`/update-bike/${item?.key}`}>
               <Button type="primary">Update</Button>
             </Link>
@@ -71,7 +78,7 @@ const ManageBike = () => {
               onClick={() => handleDeleteBike(item?.key)}
               disabled={deleteIsLoading}
             >
-              Delete Bike
+              Delete User
             </Button>
           </Space>
         );

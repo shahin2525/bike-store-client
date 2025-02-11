@@ -7,6 +7,10 @@ import {
 } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { logout, setUser } from "../feature/auth/authSlice";
+export type TagTypes = {
+  user: string;
+  bike: string;
+};
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:3000",
   // baseUrl: "https://bike-store-ashy.vercel.app",
@@ -64,7 +68,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: ["bike"],
+  tagTypes: ["bike", "user"],
   endpoints: () => ({}),
 });
 

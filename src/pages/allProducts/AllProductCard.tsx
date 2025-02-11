@@ -16,7 +16,7 @@ const AllProductCard = ({ bike }: AllProductCardProps) => {
     >
       <Meta
         className="text-black"
-        title={name}
+        title={`Name: ${name}`}
         description={
           <>
             <p className="font-bold text-black">Brand: {brand}</p>
