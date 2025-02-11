@@ -21,7 +21,7 @@ const adminItems: MenuProps["items"] = [
 
       {
         key: "Manage User",
-        label: <NavLink to="manage-user">Manage User</NavLink>,
+        label: <NavLink to="manage-user">Manage Customer</NavLink>,
       },
       {
         key: "Manage Order",

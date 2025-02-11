@@ -1,41 +1,52 @@
-import { Table } from "antd";
-
+import { Button, Space, Table, TableColumnsType } from "antd";
+import {
+  useDeleteOrderMutation,
+  useGetAllOrderQuery,
+  useUpdateOrderMutation,
+} from "../../../redux/feature/order/orderApi";
+import { TOrder } from "../../../types/order.type";
+import { toast } from "sonner";
+export type TTableData = Pick<
+  TOrder,
+  "product" | "email" | "status" | "_id" | "quantity"
+>;
 const ManageOrder = () => {
   const {
     data: orderData,
     isLoading,
     isFetching,
-  } = useGetAllUserQuery(undefined);
-  const [deleteUser, { isLoading: deleteIsLoading }] = useDeleteUserMutation();
+  } = useGetAllOrderQuery(undefined);
+  const [deleteOrder, { isLoading: deleteIsLoading }] =
+    useDeleteOrderMutation();
 
-  const [deactivateUser, { isLoading: blockIsLoading }] =
-    useDeactivateUserMutation();
+  const [updateOrder, { isLoading: blockIsLoading }] = useUpdateOrderMutation();
 
   // console.log("bikeData", bikeData);
-  const tableData = userData?.data?.map(
-    ({ _id, name, email, role }: TUser) => ({
+  const tableData = orderData?.data?.map(
+    ({ _id, product, email, quantity, status }: TOrder) => ({
       key: _id,
-      name,
+      product,
       email,
-      role,
+      quantity,
+      status,
     })
   );
   const columns: TableColumnsType<TTableData> = [
     {
-      title: "Name",
-      key: "name",
-      dataIndex: "name",
+      title: "Product Id",
+      key: "product",
+      dataIndex: "product",
     },
 
     {
-      title: "Email",
+      title: "Customer Email",
       key: "email",
       dataIndex: "email",
     },
     {
-      title: "Role",
-      key: "role",
-      dataIndex: "role",
+      title: "Order Status",
+      key: "status",
+      dataIndex: "status",
     },
 
     // {
@@ -61,33 +72,33 @@ const ManageOrder = () => {
       key: "x",
       render: (item) => {
         // console.log("item", item);
-        const handleDeleteUser = async (id: string) => {
+        const handleDeleteOrder = async (id: string) => {
           const toastId = toast.loading("deleting .....");
           try {
-            const res = await deleteUser(id).unwrap();
+            const res = await deleteOrder(id).unwrap();
             if (res?.error) {
               toast.error(res.error.data.message, { id: toastId });
             } else {
-              toast.success("user deleting successfully", { id: toastId });
+              toast.success("order deleted successfully", { id: toastId });
             }
           } catch (error) {}
         };
         //deactivate user
-        const handleDeactivateUser = async (id: string) => {
-          const toastId = toast.loading("deactivating .....");
-          const deactivateData = {
+        const handleUpdateOrder = async (id: string) => {
+          const toastId = toast.loading("updating order .....");
+          const updateOrderData = {
             id,
             data: {
-              deactivate: true,
+              status: "Delivered",
             },
           };
 
           try {
-            const res = await deactivateUser(deactivateData).unwrap();
+            const res = await updateOrder(updateOrderData).unwrap();
             if (res?.error) {
               toast.error(res.error.data.message, { id: toastId });
             } else {
-              toast.success("user deactivated successfully", { id: toastId });
+              toast.success("order updated successfully", { id: toastId });
             }
           } catch (error) {}
         };
@@ -96,20 +107,20 @@ const ManageOrder = () => {
           <Space>
             <Button
               type="primary"
-              onClick={() => handleDeactivateUser(item?.key)}
+              onClick={() => handleUpdateOrder(item?.key)}
               disabled={deleteIsLoading}
             >
-              Deactivate User
+              Update Order status
             </Button>
-            <Link to={`/update-user/${item?.key}`}>
+            {/* <Link to={`/update-user/${item?.key}`}>
               <Button type="primary">Update</Button>
-            </Link>
+            </Link> */}
             <Button
               type="primary"
-              onClick={() => handleDeleteUser(item?.key)}
+              onClick={() => handleDeleteOrder(item?.key)}
               disabled={deleteIsLoading}
             >
-              Delete User
+              Delete Order
             </Button>
           </Space>
         );

@@ -11,7 +11,7 @@ export type TTableData = Pick<TUser, "name" | "email" | "role" | "_id">;
 const ManageUser = () => {
   const {
     data: userData,
-    isLoading,
+
     isFetching,
   } = useGetAllUserQuery(undefined);
   const [deleteUser, { isLoading: deleteIsLoading }] = useDeleteUserMutation();
@@ -105,13 +105,13 @@ const ManageUser = () => {
             <Button
               type="primary"
               onClick={() => handleDeactivateUser(item?.key)}
-              disabled={deleteIsLoading}
+              disabled={blockIsLoading}
             >
               Deactivate User
             </Button>
-            {/* <Link to={`/update-user/${item?.key}`}>
+            <Link to={`/update-user/${item?.key}`}>
               <Button type="primary">Update</Button>
-            </Link> */}
+            </Link>
             <Button
               type="primary"
               onClick={() => handleDeleteUser(item?.key)}
