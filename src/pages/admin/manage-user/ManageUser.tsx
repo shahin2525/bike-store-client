@@ -84,9 +84,12 @@ const ManageUser = () => {
         const handleDeactivateUser = async (id: string) => {
           const toastId = toast.loading("deactivating .....");
           const deactivateData = {
-            id: id,
-            deactivate: true,
+            id,
+            data: {
+              deactivate: true,
+            },
           };
+
           try {
             const res = await deactivateUser(deactivateData).unwrap();
             if (res?.error) {
@@ -106,9 +109,9 @@ const ManageUser = () => {
             >
               Deactivate User
             </Button>
-            <Link to={`/update-user/${item?.key}`}>
+            {/* <Link to={`/update-user/${item?.key}`}>
               <Button type="primary">Update</Button>
-            </Link>
+            </Link> */}
             <Button
               type="primary"
               onClick={() => handleDeleteUser(item?.key)}
