@@ -68,16 +68,22 @@ const userApi = baseApi.injectEndpoints({
       invalidatesTags: ["user"],
     }),
 
+    // change password
+    updatePassword: builder.mutation({
+      query: (info) => ({
+        url: "/api/auth/change-password",
+        method: "POST",
+        body: info,
+      }),
+      invalidatesTags: ["user"],
+    }),
+
     //
   }),
 });
 
 export const {
-  //   useGetAllBikeQuery,
-  //   useGetSingleBikeQuery,
-  //   useCreateBikeMutation,
-  //   useUpdateBikeMutation,
-  //   useDeleteBikeMutation,
+  useUpdatePasswordMutation,
   useGetAllUserQuery,
   useGetSingleUserQuery,
   useUpdateUserMutation,

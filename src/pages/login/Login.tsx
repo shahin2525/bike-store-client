@@ -9,7 +9,6 @@ import { useState } from "react";
 import PHForm from "../../components/form/BSForm";
 import PHInput from "../../components/form/BSInput";
 import { toast } from "sonner";
-import { TResponse } from "../../types/global.types";
 
 const Login = () => {
   const dispatch = useAppDispatch();

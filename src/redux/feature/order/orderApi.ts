@@ -58,6 +58,13 @@ const orderApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["order"],
     }),
+    // get all order by email
+    getAllOrderByEmail: builder.query({
+      query: (email) => ({
+        url: `/api/orders/${email}`,
+        method: "GET",
+      }),
+    }),
     //
   }),
 });
@@ -68,4 +75,5 @@ export const {
   useCreateOrderMutation,
   useDeleteOrderMutation,
   useUpdateOrderMutation,
+  useGetAllOrderByEmailQuery,
 } = orderApi;

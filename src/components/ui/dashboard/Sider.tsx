@@ -33,17 +33,23 @@ const adminItems: MenuProps["items"] = [
 
 const customerItems: MenuProps["items"] = [
   {
-    key: "Create Order",
-    label: <NavLink to="create-order">Create Order</NavLink>,
-  },
+    label: "Customer Management",
+    type: "group",
+    children: [
+      // {
+      //   key: "Create Order",
+      //   label: <NavLink to="create-order">Create Order</NavLink>,
+      // },
 
-  {
-    key: "Update Password",
-    label: <NavLink to="update-password">Change Password</NavLink>,
-  },
-  {
-    key: "order-cancel",
-    label: <NavLink to="order-cancel">Order Cancel</NavLink>,
+      {
+        key: "Update Password",
+        label: <NavLink to="update-password">Change Password</NavLink>,
+      },
+      {
+        key: "Orders Views",
+        label: <NavLink to="order-view">Orders View</NavLink>,
+      },
+    ],
   },
 ];
 

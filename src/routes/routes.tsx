@@ -8,14 +8,17 @@ import Login from "../pages/login/Login";
 import Checkout from "../pages/checkout/Checkout";
 import ProtectedRoute from "./ProtectedRoute";
 
-import CreateOrder from "../components/ui/user/CreateOrder";
-import UpdatePassword from "../components/ui/user/UpdatePassword";
+// import CreateOrder from "../components/ui/user/CreateOrder";
+// import UpdatePassword from "../components/ui/user/UpdatePassword";
 import Register from "../pages/register/Register";
 import ManageBike from "../pages/admin/manage-bike/ManageBike";
 import ManageUser from "../pages/admin/manage-user/ManageUser";
 import ManageOrder from "../pages/admin/manage-order/ManageOrder";
 import CreateBike from "../pages/admin/CreateBike";
 import UpdateBike from "../pages/admin/manage-bike/UpdateBike";
+import OrdersView from "../pages/user/OrdersView";
+import CreateOrder from "../pages/user/CreateOrder";
+import UpdatePassword from "../pages/user/UpdatePassword";
 
 export const router = createBrowserRouter([
   {
@@ -84,6 +87,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <UpdatePassword />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "order-view",
+        element: (
+          <ProtectedRoute>
+            <OrdersView />
           </ProtectedRoute>
         ),
       },
