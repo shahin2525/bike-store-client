@@ -1,14 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useGetSingleBikeQuery } from "../../redux/feature/bike/bikApi";
-import { Button, Card, Flex, Grid } from "antd";
+import { Button, Card, Flex, Grid, Input } from "antd";
 import { useCreateOrderMutation } from "../../redux/feature/order/orderApi";
 import PHForm from "../../components/form/BSForm";
 import { FieldValues } from "react-hook-form";
 import PHInput from "../../components/form/BSInput";
+import { useState } from "react";
 const { useBreakpoint } = Grid;
 const Checkout = () => {
   const screens = useBreakpoint();
   const { product } = useParams();
+  const [quantity, setQuantity] = useState<number | string>(1);
 
   const { data: bikeData } = useGetSingleBikeQuery(product);
   console.log(bikeData?.data);
@@ -24,11 +26,26 @@ const Checkout = () => {
     width: 273,
   };
 
-  const onsubmit = (data: FieldValues) => {
-    console.log(data);
+  const handleChange = (e: FieldValues) => {
+    let value = e.target.value.trim(); // Get input value
+
+    if (value === "") {
+      setQuantity(""); // Allow empty input
+    } else {
+      const parsedValue = parseInt(value, 10);
+      setQuantity(isNaN(parsedValue) || parsedValue < 1 ? 1 : parsedValue);
+    }
+  };
+
+  // Calculate Total Price
+  const totalPrice = (bike?.price || 0) * ((quantity as number) || 0);
+
+  const onsubmit = (e: FieldValues) => {
+    e.preventDefault();
+    console.log("Input Value:", quantity);
   };
   return (
-    <PHForm onSubmit={onsubmit}>
+    <form onSubmit={onsubmit}>
       <Flex
         justify="center"
         align="center"
@@ -57,7 +74,7 @@ const Checkout = () => {
             {/* Image - Responsive Width */}
             <img
               alt="bike"
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+              src={bike?.bikeImage}
               style={{
                 width: screens.xs ? "100%" : "40%", // Full width on small screens, 40% on large
                 maxWidth: 273,
@@ -77,21 +94,27 @@ const Checkout = () => {
               <p>Bike_Name: {bike?.name}</p>
               <p>Model: {bike?.model}</p>
               <p>Price: {bike?.price}</p>
-              <PHInput
+              <Input
                 type="number"
-                name="quantity"
-                label="Quantity"
-                marginBottom="2px"
+                value={quantity}
+                onChange={handleChange}
+                min={1}
+                placeholder="Enter quantity"
+                style={{ width: "150px" }}
               />
-              <p>Total_Price:{400}</p>
-              <Button type="primary" href="https://ant.design" target="_blank">
+              <p>Total_Price:{totalPrice}</p>
+              <Button
+                htmlType="submit"
+                type="primary"
+                //  href="https://ant.design" target="_blank"
+              >
                 Order Now
               </Button>
             </Flex>
           </Flex>
         </Card>
       </Flex>
-    </PHForm>
+    </form>
   );
 };
 
