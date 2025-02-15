@@ -74,35 +74,35 @@ const OrdersView = () => {
           }
         };
         //deactivate user
-        const handleUpdateOrder = async (id: string) => {
-          const toastId = toast.loading("updating order .....");
-          const updateOrderData = {
-            id,
-            data: {
-              status: "Delivered",
-            },
-          };
+        // const handleUpdateOrder = async (id: string) => {
+        //   const toastId = toast.loading("updating order .....");
+        //   const updateOrderData = {
+        //     id,
+        //     data: {
+        //       status: "Delivered",
+        //     },
+        //   };
 
-          try {
-            const res = await updateOrder(updateOrderData).unwrap();
-            if (res?.error) {
-              toast.error(res.error.data.message, { id: toastId });
-            } else {
-              toast.success("order updated successfully", { id: toastId });
-            }
-          } catch (error: any) {
-            toast.error(error.data.message, { id: toastId });
-          }
-        };
+        //   try {
+        //     const res = await updateOrder(updateOrderData).unwrap();
+        //     if (res?.error) {
+        //       toast.error(res.error.data.message, { id: toastId });
+        //     } else {
+        //       toast.success("order updated successfully", { id: toastId });
+        //     }
+        //   } catch (error: any) {
+        //     toast.error(error.data.message, { id: toastId });
+        //   }
+        // };
 
         return (
           <Space>
             <Button
               type="primary"
-              onClick={() => handleUpdateOrder(item?.key)}
+              // onClick={() => handleUpdateOrder(item?.key)}
               disabled={updateIsLoading}
             >
-              Update Order status
+              Update Order
             </Button>
             {/* <Link to={`/update-user/${item?.key}`}>
               <Button type="primary">Update</Button>
