@@ -5,7 +5,10 @@ import { useCreateOrderMutation } from "../../redux/feature/order/orderApi";
 import PHForm from "../../components/form/BSForm";
 import { FieldValues } from "react-hook-form";
 import PHInput from "../../components/form/BSInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/feature/auth/authSlice";
+import { toast } from "sonner";
 const { useBreakpoint } = Grid;
 const Checkout = () => {
   const screens = useBreakpoint();
@@ -14,7 +17,8 @@ const Checkout = () => {
 
   const { data: bikeData } = useGetSingleBikeQuery(product);
   // console.log(bikeData?.data);
-  const [createOrder] = useCreateOrderMutation();
+  const [createOrder, { isLoading, isSuccess, data, isError, error }] =
+    useCreateOrderMutation();
 
   const bike = bikeData?.data;
   const cardStyle: React.CSSProperties = {
@@ -27,6 +31,7 @@ const Checkout = () => {
   };
 
   const handleChange = (e: FieldValues) => {
+    e.preventDefault();
     let value = e.target.value.trim(); // Get input value
 
     if (value === "") {
@@ -40,10 +45,41 @@ const Checkout = () => {
   // Calculate Total Price
   const totalPrice = (bike?.price || 0) * ((quantity as number) || 0);
 
-  const onsubmit = (e: FieldValues) => {
+  // const onsubmit = (e: FieldValues) => {
+  //   e.preventDefault();
+  //   console.log("Input Value:", quantity);
+  // };
+  // const [createOrder, { isLoading, isSuccess, data, isError, error }] =
+  //   useCreateOrderMutation();
+  const user = useAppSelector(selectCurrentUser);
+  const userEmail = user?.data?.email;
+
+  const onsubmit = async (e: FieldValues) => {
     e.preventDefault();
-    console.log("Input Value:", quantity);
+    console.log(e);
+
+    const orderInfo = {
+      email: userEmail,
+    };
+    await createOrder(orderInfo);
   };
+
+  const toastId = "cart";
+  useEffect(() => {
+    if (isLoading) toast.loading("Processing ...", { id: toastId });
+
+    if (isSuccess) {
+      toast.success(data?.message, { id: toastId });
+      if (data?.data) {
+        setTimeout(() => {
+          window.location.href = data.data;
+        }, 1000);
+      }
+    }
+
+    if (isError) toast.error(JSON.stringify(error), { id: toastId });
+  }, [data?.data, data?.message, error, isError, isLoading, isSuccess]);
+
   return (
     <form onSubmit={onsubmit}>
       <Flex
