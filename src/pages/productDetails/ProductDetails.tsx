@@ -23,9 +23,9 @@ const ProductDetails = () => {
     return null;
   }
 
-  console.log(data?.data);
+  // console.log(data?.data);
   const bike = data?.data;
-  console.log("bike", bike);
+  // console.log("bike", bike);
   const {
     bikeImage,
     stock,

@@ -7,7 +7,7 @@ type AllProductCardProps = {
   bike: TBike;
 };
 const AllProductCard = ({ bike }: AllProductCardProps) => {
-  console.log(bike);
+  // console.log(bike);
   const { bikeImage, name, brand, model, category, price, _id } = bike;
   return (
     <Card

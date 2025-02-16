@@ -13,7 +13,7 @@ const Checkout = () => {
   const [quantity, setQuantity] = useState<number | string>(1);
 
   const { data: bikeData } = useGetSingleBikeQuery(product);
-  console.log(bikeData?.data);
+  // console.log(bikeData?.data);
   const [createOrder] = useCreateOrderMutation();
 
   const bike = bikeData?.data;
@@ -91,10 +91,16 @@ const Checkout = () => {
                 textAlign: screens.xs ? "center" : "left",
               }}
             >
-              <p>Bike_Name: {bike?.name}</p>
-              <p>Model: {bike?.model}</p>
-              <p>Price: {bike?.price}</p>
+              <p
+                className="text-bold text-[16px] "
+                style={{ marginTop: "20px" }}
+              >
+                Bike_Name: {bike?.name}
+              </p>
+              <p className="text-bold text-[16px] ">Model: {bike?.model}</p>
+              <p className="text-bold text-[16px] ">Price: {bike?.price}</p>
               <Input
+                className="text-bold text-[16px] "
                 type="number"
                 value={quantity}
                 onChange={handleChange}
@@ -102,14 +108,23 @@ const Checkout = () => {
                 placeholder="Enter quantity"
                 style={{ width: "150px" }}
               />
-              <p>Total_Price:{totalPrice}</p>
-              <Button
-                htmlType="submit"
-                type="primary"
-                //  href="https://ant.design" target="_blank"
+              <p className="text-bold text-[18px] ">
+                Total_Price: <span>{totalPrice} </span>
+              </p>
+              <Flex
+                align={screens.xs ? "center" : "end"}
+                justify={screens.xs ? "center" : "flex-end"} // Center on small screens, right-align on large
+                style={{ width: "100%", marginTop: 8 }}
               >
-                Order Now
-              </Button>
+                {" "}
+                <Button
+                  htmlType="submit"
+                  type="primary"
+                  //  href="https://ant.design" target="_blank"
+                >
+                  Order Now
+                </Button>
+              </Flex>
             </Flex>
           </Flex>
         </Card>
