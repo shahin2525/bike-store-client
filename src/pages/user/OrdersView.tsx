@@ -168,12 +168,6 @@ const OrdersView = () => {
   // />
   // );
   return (
-    // <Table
-    //   loading={isFetching}
-    //   columns={columns}
-    //   dataSource={tableData}
-    //   pagination={false}
-    // />
     <div className="overflow-x-auto">
       <Table
         loading={isFetching}
