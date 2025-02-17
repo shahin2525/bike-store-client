@@ -12,15 +12,6 @@ import {
   bikeModelOptions,
   brandsOptions,
 } from "../../constants/global.const";
-// import { useCreateBikeMutation } from "../../../../redux/feature/bike/bikApi";
-// import { TResponse } from "../../../../types/global.types";
-// import PHInput from "../../../form/BSInput";
-// import BSSelect from "../../../form/BSSelect";
-// import {
-//   bikeCategoriesOptions,
-//   bikeModelOptions,
-//   brandsOptions,
-// } from "../../../../constants/global.const";
 
 const CreateBike = () => {
   const [createBike] = useCreateBikeMutation();

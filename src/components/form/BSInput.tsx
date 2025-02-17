@@ -6,15 +6,8 @@ type TInput = {
   label?: string;
   disabled?: boolean;
 };
-const PHInput = ({ type, name, label, disabled }: TInput) => {
+const BSInput = ({ type, name, label, disabled }: TInput) => {
   return (
-    // <div style={{ marginBottom: "20px" }}>
-    //   {label ? label : null}
-    //   <Controller
-    //     name={name}
-    //     render={({ field }) => <input type={type} {...field} id={name} />}
-    //   />
-    // </div>
     <div style={{ marginBottom: "16px" }}>
       {/* {label ? label : null} : */}
       <Controller
@@ -35,4 +28,4 @@ const PHInput = ({ type, name, label, disabled }: TInput) => {
   );
 };
 
-export default PHInput;
+export default BSInput;
