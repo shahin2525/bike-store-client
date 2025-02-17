@@ -58,6 +58,17 @@ const userApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["user"],
     }),
+
+    // delete bike
+    // deleteBike: builder.mutation({
+    //   query: (id) => ({
+    //     url: `/api/products/${id}`,
+    //     method: "DELETE",
+    //   }),
+    //   invalidatesTags: ["bike"],
+    // }),
+    //
+
     //deactivated user
     deactivateUser: builder.mutation({
       query: (args) => ({

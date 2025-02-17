@@ -36,22 +36,32 @@ const ManageOrder = () => {
       title: "Product Id",
       key: "product",
       dataIndex: "product",
+      responsive: ["xs", "sm", "md", "lg"],
+      // responsive: ["md"],
+      // width: "auto",
+      // minWidth: 150, // ✅ Ensure visibility
     },
 
     {
       title: "Customer Email",
       key: "email",
       dataIndex: "email",
+      responsive: ["xs", "sm", "md", "lg"],
+      // responsive: ["md"],
+      // width: "auto",
+      // minWidth: 200,
     },
     {
       title: "Order Status",
       key: "status",
       dataIndex: "status",
+      responsive: ["xs", "sm", "md", "lg"],
     },
 
     {
       title: "Action",
       key: "x",
+
       render: (item) => {
         // console.log("item", item);
         const handleDeleteOrder = async (id: string) => {
@@ -67,40 +77,9 @@ const ManageOrder = () => {
             toast.error(error.data.message, { id: toastId });
           }
         };
-        //deactivate user
-        // const handleUpdateOrder = async (id: string) => {
-        //   const toastId = toast.loading("updating order .....");
-        //   const updateOrderData = {
-        //     id,
-        //     data: {
-        //       status: "Delivered",
-        //     },
-        //   };
-
-        //   try {
-        //     const res = await updateOrder(updateOrderData).unwrap();
-        //     if (res?.error) {
-        //       toast.error(res.error.data.message, { id: toastId });
-        //     } else {
-        //       toast.success("order updated successfully", { id: toastId });
-        //     }
-        //   } catch (error: any) {
-        //     toast.error(error.data.message, { id: toastId });
-        //   }
-        // };
 
         return (
           <Space>
-            {/* <Button
-              type="primary"
-              onClick={() => handleUpdateOrder(item?.key)}
-              disabled={updateIsLoading}
-            >
-              Update Order status
-            </Button> */}
-            {/* <Link to={`/update-user/${item?.key}`}>
-              <Button type="primary">Update</Button>
-            </Link> */}
             <Button
               type="primary"
               onClick={() => handleDeleteOrder(item?.key)}
@@ -112,6 +91,7 @@ const ManageOrder = () => {
         );
       },
       width: "1%",
+      responsive: ["sm", "md", "lg"],
     },
   ];
 
@@ -120,7 +100,8 @@ const ManageOrder = () => {
       loading={isFetching}
       columns={columns}
       dataSource={tableData}
-      pagination={false}
+      pagination={{ pageSize: 5 }}
+      scroll={{ x: "max-content" }}
     />
   );
 };

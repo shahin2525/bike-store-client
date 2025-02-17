@@ -33,36 +33,21 @@ const ManageUser = () => {
       title: "Name",
       key: "name",
       dataIndex: "name",
+      responsive: ["xs", "sm", "md", "lg"],
     },
 
     {
       title: "Email",
       key: "email",
       dataIndex: "email",
+      responsive: ["xs", "sm", "md", "lg"],
     },
     {
       title: "Role",
       key: "role",
       dataIndex: "role",
+      responsive: ["xs", "sm", "md", "lg"],
     },
-
-    // {
-    //   title: "Action",
-    //   key: "x",
-    //   render: (item) => {
-    //     // console.log("item", item);
-    //     const handleDeleteUser = async (id: string) => {
-    //       const toastId = toast.loading("deleting .....");
-    //       try {
-    //         const res = await deleteBike(id).unwrap();
-    //         if (res?.error) {
-    //           toast.error(res.error.data.message, { id: toastId });
-    //         } else {
-    //           toast.success("bike deleting successfully", { id: toastId });
-    //         }
-    //       } catch (error) {}
-
-    //     };
 
     {
       title: "Action",
@@ -113,9 +98,7 @@ const ManageUser = () => {
             >
               Deactivate Customer
             </Button>
-            {/* <Link to={`/update-user/${item?.key}`}>
-              <Button type="primary">Update Customer</Button>
-            </Link> */}
+
             <Button
               type="primary"
               onClick={() => handleDeleteUser(item?.key)}
@@ -127,6 +110,7 @@ const ManageUser = () => {
         );
       },
       width: "1%",
+      responsive: ["sm", "md", "lg"],
     },
   ];
 
@@ -135,7 +119,8 @@ const ManageUser = () => {
       loading={isFetching}
       columns={columns}
       dataSource={tableData}
-      pagination={false}
+      pagination={{ pageSize: 5 }}
+      scroll={{ x: "max-content" }}
     />
   );
 };

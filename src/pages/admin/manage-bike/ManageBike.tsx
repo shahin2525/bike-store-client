@@ -17,7 +17,7 @@ const ManageBike = () => {
   } = useGetAllBikeQuery(undefined);
   const [deleteBike, { isError, isLoading: deleteIsLoading }] =
     useDeleteBikeMutation();
-  // console.log(isError);
+  console.log(isError);
   // console.log("bikeData", bikeData);
   const tableData = bikeData?.data?.map(
     ({ _id, model, name, brand }: TBike) => ({
