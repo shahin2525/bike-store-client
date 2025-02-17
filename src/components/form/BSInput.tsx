@@ -5,9 +5,8 @@ type TInput = {
   name: string;
   label?: string;
   disabled?: boolean;
-  marginBottom?: string;
 };
-const PHInput = ({ type, name, label, disabled, marginBottom }: TInput) => {
+const PHInput = ({ type, name, label, disabled }: TInput) => {
   return (
     // <div style={{ marginBottom: "20px" }}>
     //   {label ? label : null}
@@ -16,7 +15,7 @@ const PHInput = ({ type, name, label, disabled, marginBottom }: TInput) => {
     //     render={({ field }) => <input type={type} {...field} id={name} />}
     //   />
     // </div>
-    <div style={{ marginBottom }}>
+    <div style={{ marginBottom: "16px" }}>
       {/* {label ? label : null} : */}
       <Controller
         name={name}

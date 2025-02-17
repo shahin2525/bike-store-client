@@ -65,6 +65,14 @@ const orderApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    // verifyOrder
+    verifyOrder: builder.query({
+      query: (order_id) => ({
+        url: "/api/orders/verify",
+        params: { order_id },
+        method: "GET",
+      }),
+    }),
     //
   }),
 });
@@ -76,4 +84,5 @@ export const {
   useDeleteOrderMutation,
   useUpdateOrderMutation,
   useGetAllOrderByEmailQuery,
+  useVerifyOrderQuery,
 } = orderApi;

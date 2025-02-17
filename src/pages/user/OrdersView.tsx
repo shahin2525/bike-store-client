@@ -37,76 +37,49 @@ const OrdersView = () => {
       status,
     })
   );
+
   const columns: TableColumnsType<TTableData> = [
     {
       title: "Product Id",
       key: "product",
       dataIndex: "product",
+      responsive: ["xs", "sm", "md", "lg"],
     },
-
     {
       title: "Customer Email",
       key: "email",
       dataIndex: "email",
+      responsive: ["sm", "md", "lg"],
     },
     {
       title: "Order Status",
       key: "status",
       dataIndex: "status",
+      responsive: ["xs", "sm", "md", "lg"],
     },
-
     {
       title: "Action",
       key: "x",
       render: (item) => {
-        // console.log("item", item);
         const handleDeleteOrder = async (id: string) => {
-          const toastId = toast.loading("deleting .....");
+          const toastId = toast.loading("Deleting...");
           try {
             const res = await deleteOrder(id).unwrap();
             if (res?.error) {
               toast.error(res.error.data.message, { id: toastId });
             } else {
-              toast.success("order deleted successfully", { id: toastId });
+              toast.success("Order deleted successfully", { id: toastId });
             }
           } catch (error: any) {
             toast.error(error.data.message, { id: toastId });
           }
         };
-        //deactivate user
-        // const handleUpdateOrder = async (id: string) => {
-        //   const toastId = toast.loading("updating order .....");
-        //   const updateOrderData = {
-        //     id,
-        //     data: {
-        //       status: "Delivered",
-        //     },
-        //   };
-
-        //   try {
-        //     const res = await updateOrder(updateOrderData).unwrap();
-        //     if (res?.error) {
-        //       toast.error(res.error.data.message, { id: toastId });
-        //     } else {
-        //       toast.success("order updated successfully", { id: toastId });
-        //     }
-        //   } catch (error: any) {
-        //     toast.error(error.data.message, { id: toastId });
-        //   }
-        // };
 
         return (
           <Space>
-            <Button
-              type="primary"
-              // onClick={() => handleUpdateOrder(item?.key)}
-              disabled={updateIsLoading}
-            >
+            <Button type="primary" disabled>
               Update Order
             </Button>
-            {/* <Link to={`/update-user/${item?.key}`}>
-              <Button type="primary">Update</Button>
-            </Link> */}
             <Button
               type="primary"
               onClick={() => handleDeleteOrder(item?.key)}
@@ -118,8 +91,72 @@ const OrdersView = () => {
         );
       },
       width: "1%",
+      responsive: ["sm", "md", "lg"],
     },
   ];
+
+  // const columns: TableColumnsType<TTableData> = [
+  //   {
+  //     title: "Product Id",
+  //     key: "product",
+  //     dataIndex: "product",
+  //   },
+
+  //   {
+  //     title: "Customer Email",
+  //     key: "email",
+  //     dataIndex: "email",
+  //   },
+  //   {
+  //     title: "Order Status",
+  //     key: "status",
+  //     dataIndex: "status",
+  //   },
+
+  //   {
+  //     title: "Action",
+  //     key: "x",
+  //     render: (item) => {
+  //       // console.log("item", item);
+  //       const handleDeleteOrder = async (id: string) => {
+  //         const toastId = toast.loading("deleting .....");
+  //         try {
+  //           const res = await deleteOrder(id).unwrap();
+  //           if (res?.error) {
+  //             toast.error(res.error.data.message, { id: toastId });
+  //           } else {
+  //             toast.success("order deleted successfully", { id: toastId });
+  //           }
+  //         } catch (error: any) {
+  //           toast.error(error.data.message, { id: toastId });
+  //         }
+  //       };
+
+  //       return (
+  //         <Space>
+  //           <Button
+  //             type="primary"
+  //             // onClick={() => handleUpdateOrder(item?.key)}
+  //             disabled={updateIsLoading}
+  //           >
+  //             Update Order
+  //           </Button>
+  //           {/* <Link to={`/update-user/${item?.key}`}>
+  //             <Button type="primary">Update</Button>
+  //           </Link> */}
+  //           <Button
+  //             type="primary"
+  //             onClick={() => handleDeleteOrder(item?.key)}
+  //             disabled={deleteIsLoading}
+  //           >
+  //             Delete Order
+  //           </Button>
+  //         </Space>
+  //       );
+  //     },
+  //     width: "1%",
+  //   },
+  // ];
 
   // return
   // (
@@ -131,12 +168,21 @@ const OrdersView = () => {
   // />
   // );
   return (
-    <Table
-      loading={isFetching}
-      columns={columns}
-      dataSource={tableData}
-      pagination={false}
-    />
+    // <Table
+    //   loading={isFetching}
+    //   columns={columns}
+    //   dataSource={tableData}
+    //   pagination={false}
+    // />
+    <div className="overflow-x-auto">
+      <Table
+        loading={isFetching}
+        columns={columns}
+        dataSource={tableData}
+        pagination={{ pageSize: 5 }}
+        scroll={{ x: "max-content" }} // Enables horizontal scrolling
+      />
+    </div>
   );
 };
 

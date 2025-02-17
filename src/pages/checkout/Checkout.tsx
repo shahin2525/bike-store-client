@@ -56,11 +56,13 @@ const Checkout = () => {
 
   const onsubmit = async (e: FieldValues) => {
     e.preventDefault();
-    console.log(e);
 
     const orderInfo = {
       email: userEmail,
+      quantity,
+      product: bike?._id,
     };
+    console.log(orderInfo);
     await createOrder(orderInfo);
   };
 

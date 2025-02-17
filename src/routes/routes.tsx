@@ -19,6 +19,7 @@ import UpdateBike from "../pages/admin/manage-bike/UpdateBike";
 import OrdersView from "../pages/user/OrdersView";
 import CreateOrder from "../pages/user/CreateOrder";
 import UpdatePassword from "../pages/user/UpdatePassword";
+import VerifyOrder from "../pages/order/VerifyOrder";
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +96,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <OrdersView />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "verify-order",
+        element: (
+          <ProtectedRoute>
+            <VerifyOrder />
           </ProtectedRoute>
         ),
       },
