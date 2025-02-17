@@ -12,8 +12,8 @@ export type TagTypes = {
   bike: string;
 };
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3000",
-  // baseUrl: "https://bike-store-ashy.vercel.app",
+  // baseUrl: "http://localhost:3000",
+  baseUrl: "https://bike-store-ashy.vercel.app",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
