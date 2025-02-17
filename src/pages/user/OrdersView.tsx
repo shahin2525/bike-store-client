@@ -23,7 +23,7 @@ const OrdersView = () => {
   const [deleteOrder, { isLoading: deleteIsLoading }] =
     useDeleteOrderMutation();
 
-  // console.log("orderData", orderData);
+  console.log("orderData", orderData);
   const tableData = orderData?.data?.map(
     ({ _id, product, email, quantity, status, totalPrice }: TOrder) => ({
       key: _id,

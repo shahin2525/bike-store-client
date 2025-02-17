@@ -2,7 +2,6 @@ import { Button, Space, Table, TableColumnsType } from "antd";
 import {
   useDeleteOrderMutation,
   useGetAllOrderQuery,
-  useUpdateOrderMutation,
 } from "../../../redux/feature/order/orderApi";
 import { TOrder } from "../../../types/order.type";
 import { toast } from "sonner";
@@ -19,8 +18,8 @@ const ManageOrder = () => {
   const [deleteOrder, { isLoading: deleteIsLoading }] =
     useDeleteOrderMutation();
 
-  const [updateOrder, { isLoading: updateIsLoading }] =
-    useUpdateOrderMutation();
+  // const [updateOrder, { isLoading: updateIsLoading }] =
+  //   useUpdateOrderMutation();
 
   // console.log("bikeData", bikeData);
   const tableData = orderData?.data?.map(
@@ -69,36 +68,36 @@ const ManageOrder = () => {
           }
         };
         //deactivate user
-        const handleUpdateOrder = async (id: string) => {
-          const toastId = toast.loading("updating order .....");
-          const updateOrderData = {
-            id,
-            data: {
-              status: "Delivered",
-            },
-          };
+        // const handleUpdateOrder = async (id: string) => {
+        //   const toastId = toast.loading("updating order .....");
+        //   const updateOrderData = {
+        //     id,
+        //     data: {
+        //       status: "Delivered",
+        //     },
+        //   };
 
-          try {
-            const res = await updateOrder(updateOrderData).unwrap();
-            if (res?.error) {
-              toast.error(res.error.data.message, { id: toastId });
-            } else {
-              toast.success("order updated successfully", { id: toastId });
-            }
-          } catch (error: any) {
-            toast.error(error.data.message, { id: toastId });
-          }
-        };
+        //   try {
+        //     const res = await updateOrder(updateOrderData).unwrap();
+        //     if (res?.error) {
+        //       toast.error(res.error.data.message, { id: toastId });
+        //     } else {
+        //       toast.success("order updated successfully", { id: toastId });
+        //     }
+        //   } catch (error: any) {
+        //     toast.error(error.data.message, { id: toastId });
+        //   }
+        // };
 
         return (
           <Space>
-            <Button
+            {/* <Button
               type="primary"
               onClick={() => handleUpdateOrder(item?.key)}
               disabled={updateIsLoading}
             >
               Update Order status
-            </Button>
+            </Button> */}
             {/* <Link to={`/update-user/${item?.key}`}>
               <Button type="primary">Update</Button>
             </Link> */}
