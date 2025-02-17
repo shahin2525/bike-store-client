@@ -4,10 +4,15 @@ import AllProductCard from "./AllProductCard";
 import { TBike } from "../../types/bike.type";
 import { useEffect, useState } from "react";
 import { Input, Select } from "antd";
-const { Option } = Select;
-// filter api http://localhost:3000/api/products?brand=Road Runner
-// search api http://localhost:3000/api/products?search=Road Runner
-// type SearchProps = GetProps<typeof Input.Search>;
+// import BSSelect from "../../components/form/BSSelect";
+// import { bikeCategoriesOptions } from "../../constants/global.const";
+
+import {
+  bikeCategoriesOptions,
+  bikeModelOptions,
+  brandsOptions,
+} from "../../constants/global.const";
+
 const { Search } = Input;
 const AllProducts = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -71,34 +76,25 @@ const AllProducts = () => {
             placeholder="Select Brand"
             style={{ width: "150px" }}
             onChange={(value) => handleFilterChange("brand", value)}
+            options={brandsOptions}
             allowClear
-          >
-            <Option value="Road Runner">Road Runner</Option>
-            <Option value="Yamaha">Yamaha</Option>
-            <Option value="Honda">Honda</Option>
-          </Select>
+          ></Select>
 
           <Select
             placeholder="Select Model"
             style={{ width: "150px" }}
             onChange={(value) => handleFilterChange("model", value)}
             allowClear
-          >
-            <Option value="RX100">RX100</Option>
-            <Option value="CBR 150">CBR 150</Option>
-            <Option value="R15">R15</Option>
-          </Select>
+            options={bikeModelOptions}
+          ></Select>
 
           <Select
             placeholder="Select Category"
             style={{ width: "150px" }}
             onChange={(value) => handleFilterChange("category", value)}
+            options={bikeCategoriesOptions}
             allowClear
-          >
-            <Option value="Sport">Sport</Option>
-            <Option value="Cruiser">Cruiser</Option>
-            <Option value="Scooter">Scooter</Option>
-          </Select>
+          ></Select>
         </div>
       </div>
       <div

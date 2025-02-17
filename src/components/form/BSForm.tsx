@@ -19,7 +19,7 @@ type TFormProps<T extends FieldValues> = {
   formMethods?: UseFormReturn<T>;
 } & TUserConfig<T>;
 
-const PHForm = <T extends FieldValues>({
+const BSForm = <T extends FieldValues>({
   children,
   onSubmit,
   defaultValues,
@@ -41,11 +41,8 @@ const PHForm = <T extends FieldValues>({
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(submit)}>{children}</form>
-      {/* <Button htmlType="button" onClick={() => method.reset()}>
-        Reset Form
-      </Button> */}
     </FormProvider>
   );
 };
 
-export default PHForm;
+export default BSForm;
