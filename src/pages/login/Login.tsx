@@ -18,10 +18,10 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const defaultValues = {
-    email: "samin@s.com",
-    password: "user1234",
-  };
+  // const defaultValues = {
+  //   email: "samin@s.com",
+  //   password: "user1234",
+  // };
 
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading("Logging in");
@@ -58,7 +58,7 @@ const Login = () => {
   return (
     <Flex align="center" justify="center" style={{ marginTop: "30px" }}>
       <Col span={6}>
-        <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
+        <PHForm onSubmit={onSubmit}>
           <PHInput type="text" name="email" label="Email" />
 
           <PHInput type="text" name="password" label="Password" />

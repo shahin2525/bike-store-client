@@ -32,17 +32,20 @@ const ManageBike = () => {
       title: "Name",
       key: "name",
       dataIndex: "name",
+      responsive: ["xs", "sm", "md", "lg"],
     },
 
     {
       title: "Brand",
       key: "brand",
       dataIndex: "brand",
+      responsive: ["xs", "sm", "md", "lg"],
     },
     {
       title: "Model",
       key: "model",
       dataIndex: "model",
+      responsive: ["xs", "sm", "md", "lg"],
     },
 
     {
@@ -86,6 +89,7 @@ const ManageBike = () => {
         );
       },
       width: "1%",
+      responsive: ["sm", "md", "lg"],
     },
   ];
   return (
@@ -93,7 +97,8 @@ const ManageBike = () => {
       loading={isFetching}
       columns={columns}
       dataSource={tableData}
-      pagination={false}
+      pagination={{ pageSize: 5 }}
+      scroll={{ x: "max-content" }}
     />
   );
 };
