@@ -5,7 +5,7 @@ type TAuthData = {
   email: string;
   role: string;
 };
-type TAuthUser = {
+export type TAuthUser = {
   data: TAuthData;
   iat: string;
   exp: string;

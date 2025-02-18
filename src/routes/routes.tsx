@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
       {
         path: "create-bike",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="admin">
             <CreateBike />
           </ProtectedRoute>
         ),
@@ -54,7 +54,7 @@ export const router = createBrowserRouter([
       {
         path: "manage-bike",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="admin">
             <ManageBike />
           </ProtectedRoute>
         ),
@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
       {
         path: "manage-user",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="admin">
             <ManageUser />
           </ProtectedRoute>
         ),
@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
       {
         path: "manage-order",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="admin">
             <ManageOrder />
           </ProtectedRoute>
         ),
@@ -78,7 +78,7 @@ export const router = createBrowserRouter([
       {
         path: "create-order",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="customer">
             <CreateOrder />
           </ProtectedRoute>
         ),
@@ -94,7 +94,7 @@ export const router = createBrowserRouter([
       {
         path: "order-view",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="customer">
             <OrdersView />
           </ProtectedRoute>
         ),
@@ -102,7 +102,7 @@ export const router = createBrowserRouter([
       {
         path: "verify-order",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="customer">
             <VerifyOrder />
           </ProtectedRoute>
         ),
@@ -110,7 +110,7 @@ export const router = createBrowserRouter([
       {
         path: "update-bike/:id",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="admin">
             <UpdateBike />
           </ProtectedRoute>
         ),
