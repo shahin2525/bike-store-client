@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
+# 🚴 Bike Shop - Full-Stack Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🛠 Technologies Used
 
-Currently, two official plugins are available:
+- **Frontend:** React, TypeScript, Tailwind CSS, Ant Design
+- **State Management:** Redux
+- **Routing:** React Router DOM
+- **Authentication:** Role-based authentication (Admin & Customer)
+- **Payment Gateway:** ShurjoPay integration
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+## 📌 Features
+
+### 🔹 User Roles
+
+#### Admin Dashboard
+
+- Manage bikes (create, update, delete)
+- Manage customers and orders
+- View analytics
+
+#### Customer Dashboard
+
+- Browse and purchase bikes
+- View order history
+- Update profile
+
+### 🔹 Core Functionalities
+
+- Secure authentication and authorization
+- Fully responsive UI for all devices
+- Smooth user experience with Ant Design and Tailwind CSS
+- Integrated payment gateway (ShurjoPay) for seamless transactions
+
+## 🚀 Getting Started
+
+### 🏗 Installation
+
+```bash
+git clone https://github.com/your-repo/bike-shop.git
+cd bike-shop
+npm install
+npm start
+
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
