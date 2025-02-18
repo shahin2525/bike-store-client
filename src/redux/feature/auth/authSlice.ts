@@ -28,6 +28,7 @@ export const authSlice = createSlice({
       // state.user = action.payload;
       // state.token = action.payload;
       const { user, token } = action.payload;
+      console.log("select current token", action.payload);
       state.user = user;
       state.token = token;
     },
@@ -44,4 +45,5 @@ export const { setUser, logout } = authSlice.actions;
 export default authSlice.reducer;
 
 export const selectCurrentToken = (state: RootState) => state.auth.token;
+
 export const selectCurrentUser = (state: RootState) => state.auth.user;

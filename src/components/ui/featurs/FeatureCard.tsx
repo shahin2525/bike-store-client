@@ -15,12 +15,12 @@ const FeatureCard = ({ bike }: FeatureCardProps) => {
         alt=""
         className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
       />
-      <div className="mt-6 mb-2">
+      <div className="mt-6 mb-2" style={{ padding: "0 6px" }}>
         <h2 className="text-xl font-semibold tracking-wide">{brand}</h2>
       </div>
       <p
         className="dark:text-gray-800"
-        style={{ marginBottom: "5px", paddingBottom: "5px" }}
+        style={{ marginBottom: "5px", padding: "6px" }}
       >
         {description}
       </p>

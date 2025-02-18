@@ -36,10 +36,10 @@
 ### 🏗 Installation
 
 ```bash
-git clone https://github.com/your-repo/bike-shop.git
-cd bike-shop
+git clone https://github.com/shahin2525/bike-store-client
+cd bike-store-client
 npm install
-npm start
+npm run dev
 
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 ```

@@ -2,13 +2,18 @@ import { useParams } from "react-router-dom";
 import { useGetSingleBikeQuery } from "../../redux/feature/bike/bikApi";
 import { Button, Card, Flex, Grid, Input } from "antd";
 import { useCreateOrderMutation } from "../../redux/feature/order/orderApi";
-import PHForm from "../../components/form/BSForm";
+
 import { FieldValues } from "react-hook-form";
-import PHInput from "../../components/form/BSInput";
+
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../redux/hooks";
-import { selectCurrentUser } from "../../redux/feature/auth/authSlice";
+import {
+  selectCurrentToken,
+  selectCurrentUser,
+  TAuthUser,
+} from "../../redux/feature/auth/authSlice";
 import { toast } from "sonner";
+import { verifyToken } from "../../utils/verifyToken";
 const { useBreakpoint } = Grid;
 const Checkout = () => {
   const screens = useBreakpoint();
@@ -21,14 +26,14 @@ const Checkout = () => {
     useCreateOrderMutation();
 
   const bike = bikeData?.data;
-  const cardStyle: React.CSSProperties = {
-    width: 620,
-  };
+  // const cardStyle: React.CSSProperties = {
+  //   width: 620,
+  // };
 
-  const imgStyle: React.CSSProperties = {
-    display: "block",
-    width: 273,
-  };
+  // const imgStyle: React.CSSProperties = {
+  //   display: "block",
+  //   width: 273,
+  // };
 
   const handleChange = (e: FieldValues) => {
     e.preventDefault();
@@ -52,6 +57,15 @@ const Checkout = () => {
   // const [createOrder, { isLoading, isSuccess, data, isError, error }] =
   //   useCreateOrderMutation();
   const user = useAppSelector(selectCurrentUser);
+  // const token = useAppSelector(selectCurrentToken);
+  // // const user = useAppSelector(selectCurrentUser);
+  // let user: TAuthUser | null = null;
+  // if (token) {
+  //   const decodedToken = verifyToken(token) as unknown as Partial<TAuthUser>;
+  //   if (decodedToken?.data) {
+  //     user = decodedToken as TAuthUser; // Now we safely assert it
+  //   }
+  // }
   const userEmail = user?.data?.email;
 
   const onsubmit = async (e: FieldValues) => {

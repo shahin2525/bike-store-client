@@ -7,13 +7,14 @@ import {
 } from "../redux/feature/auth/authSlice";
 import { Navigate, useLocation } from "react-router-dom";
 import { verifyToken } from "../utils/verifyToken";
-import { TUser } from "../types/user.type";
+
 type TProtectedRouteProps = {
   children: ReactNode;
   role?: string | undefined;
 };
 const ProtectedRoute = ({ children, role }: TProtectedRouteProps) => {
   const token = useAppSelector(selectCurrentToken);
+  console.log("token", token);
   const location = useLocation();
   //
 
@@ -31,10 +32,11 @@ const ProtectedRoute = ({ children, role }: TProtectedRouteProps) => {
   }
 
   const dispatch = useAppDispatch();
-  // console.log("user", user);
-  // console.log("role", role);
+  console.log("user", user);
+  console.log("user role", user?.data?.role);
+  console.log("role", role);
 
-  if (user?.data?.role !== role) {
+  if (role && user?.data?.role !== role) {
     dispatch(logout());
     return <Navigate to="/login" replace={true} />;
   }

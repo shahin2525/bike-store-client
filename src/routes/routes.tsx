@@ -8,8 +8,6 @@ import Login from "../pages/login/Login";
 import Checkout from "../pages/checkout/Checkout";
 import ProtectedRoute from "./ProtectedRoute";
 
-// import CreateOrder from "../components/ui/user/CreateOrder";
-// import UpdatePassword from "../components/ui/user/UpdatePassword";
 import Register from "../pages/register/Register";
 import ManageBike from "../pages/admin/manage-bike/ManageBike";
 import ManageUser from "../pages/admin/manage-user/ManageUser";
@@ -126,7 +124,7 @@ export const router = createBrowserRouter([
       {
         path: "checkout/:product",
         element: (
-          <ProtectedRoute>
+          <ProtectedRoute role="customer">
             <Checkout></Checkout>
           </ProtectedRoute>
         ),
