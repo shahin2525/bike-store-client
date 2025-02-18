@@ -73,7 +73,7 @@ const AllProducts = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           <Select
-            placeholder="Select Brand"
+            placeholder="Filter Brand"
             style={{ width: "150px" }}
             onChange={(value) => handleFilterChange("brand", value)}
             options={brandsOptions}
@@ -81,7 +81,7 @@ const AllProducts = () => {
           ></Select>
 
           <Select
-            placeholder="Select Model"
+            placeholder="Filter Model"
             style={{ width: "150px" }}
             onChange={(value) => handleFilterChange("model", value)}
             allowClear
@@ -89,7 +89,7 @@ const AllProducts = () => {
           ></Select>
 
           <Select
-            placeholder="Select Category"
+            placeholder="Filter Category"
             style={{ width: "150px" }}
             onChange={(value) => handleFilterChange("category", value)}
             options={bikeCategoriesOptions}
