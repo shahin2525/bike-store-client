@@ -5,7 +5,7 @@ import { verifyToken } from "../../utils/verifyToken";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/feature/auth/authSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+
 import PHForm from "../../components/form/BSForm";
 import PHInput from "../../components/form/BSInput";
 import { toast } from "sonner";
@@ -13,7 +13,7 @@ import { toast } from "sonner";
 const Login = () => {
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   // console.log(error);
   const location = useLocation();
   const navigate = useNavigate();

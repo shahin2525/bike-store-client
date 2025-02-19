@@ -41,5 +41,6 @@ cd bike-store-client
 npm install
 npm run dev
 
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Live_URL](https://bike-shop-frontend.vercel.app/)
+
 ```

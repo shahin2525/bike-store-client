@@ -1,7 +1,7 @@
 import { Button, Col, Flex } from "antd";
 // import PHForm from "../../form/BSForm";
 // import PHInput from "../../form/BSInput";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { toast } from "sonner";
 import { FieldValues } from "react-hook-form";
 import { useUpdatePasswordMutation } from "../../redux/feature/user/userApi";

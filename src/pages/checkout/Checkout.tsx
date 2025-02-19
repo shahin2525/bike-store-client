@@ -7,13 +7,9 @@ import { FieldValues } from "react-hook-form";
 
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../redux/hooks";
-import {
-  selectCurrentToken,
-  selectCurrentUser,
-  TAuthUser,
-} from "../../redux/feature/auth/authSlice";
+import { selectCurrentUser } from "../../redux/feature/auth/authSlice";
 import { toast } from "sonner";
-import { verifyToken } from "../../utils/verifyToken";
+
 const { useBreakpoint } = Grid;
 const Checkout = () => {
   const screens = useBreakpoint();
