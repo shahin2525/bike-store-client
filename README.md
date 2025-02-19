@@ -41,6 +41,6 @@ cd bike-store-client
 npm install
 npm run dev
 
-- [Live_URL](https://bike-shop-frontend.vercel.app/)
+- [https://bike-shop-frontend.vercel.app/](live_URL)
 
 ```
