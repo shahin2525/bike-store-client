@@ -45,4 +45,4 @@ npm run dev
 
 ```
 
-- [https://bike-shop-frontend.vercel.app/](live_URL)
+- [live_URL](https://bike-shop-frontend.vercel.app/)
