@@ -20,8 +20,8 @@ import { useEffect } from "react";
 
 const UpdateBike = () => {
   const { id } = useParams();
-  const [updateBike, { isError }] = useUpdateBikeMutation();
-  console.log(isError);
+  const [updateBike] = useUpdateBikeMutation();
+  // console.log(isError);
   const { data: singleBikeData } = useGetSingleBikeQuery(id);
   const bike = singleBikeData?.data;
   const formMethods = useForm<{

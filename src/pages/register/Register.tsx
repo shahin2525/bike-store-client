@@ -20,7 +20,7 @@ const Register = () => {
   const onSubmit = async (data: FieldValues) => {
     // const toastId = toast.loading("logging user", { duration: 2000 });
     const toastId = toast.loading("creating", { duration: 2000 });
-    console.log(data);
+    // console.log(data);
 
     try {
       const userInfo = {

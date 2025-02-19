@@ -28,7 +28,7 @@ export const authSlice = createSlice({
       // state.user = action.payload;
       // state.token = action.payload;
       const { user, token } = action.payload;
-      console.log("select current token", action.payload);
+      // console.log("select current token", action.payload);
       state.user = user;
       state.token = token;
     },

@@ -18,7 +18,7 @@ import BSSelect from "../../components/form/BSSelect";
 
 const CreateOrder = () => {
   const { data: productData } = useGetAllBikeQuery(undefined);
-  console.log(productData);
+  // console.log(productData);
   const [createOrder] = useCreateOrderMutation();
 
   const productOptions = productData?.data?.map((item: TBike) => ({
@@ -42,7 +42,7 @@ const CreateOrder = () => {
     };
     try {
       const res = (await createOrder(orderData)) as TResponse<any>;
-      console.log(res);
+      // console.log(res);
       if (res?.error) {
         toast.error(res.error.data.message, { id: toastId });
       } else {

@@ -7,10 +7,35 @@ import { TOrder } from "../../types/order.type";
 import { toast } from "sonner";
 import { useAppSelector } from "../../redux/hooks";
 import { selectCurrentUser } from "../../redux/feature/auth/authSlice";
+
 export type TTableData = Pick<
   TOrder,
   "product" | "email" | "status" | "_id" | "quantity"
 >;
+//
+type Transaction = {
+  bank_status: string;
+  date_time: string;
+  id: string;
+  method: string;
+  sp_code: string;
+  sp_message: string;
+  transactionStatus: string | null;
+};
+
+type Order = {
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+  email: string;
+  product: string;
+  quantity: number;
+  status: string;
+  totalPrice: number;
+  transaction: Transaction;
+  __v: number;
+};
+//
 const OrdersView = () => {
   const user = useAppSelector(selectCurrentUser);
   const email = user?.data?.email;
@@ -22,34 +47,46 @@ const OrdersView = () => {
   } = useGetAllOrderByEmailQuery(email);
   const [deleteOrder, { isLoading: deleteIsLoading }] =
     useDeleteOrderMutation();
-
-  console.log("orderData", orderData);
+  //TODO
+  // const product = orderData?.data?.map((item: Order) => item.product);
+  // console.log("product", product);
+  // const { data: bike } = useGetSingleBikeQuery(product[0]);
+  // console.log("bike", bike);
   const tableData = orderData?.data?.map(
-    ({ _id, product, email, quantity, status, totalPrice }: TOrder) => ({
+    ({
+      _id,
+      product,
+      email,
+      quantity,
+      status,
+      totalPrice,
+      transaction,
+    }: Order) => ({
       key: _id,
       product,
       email,
       quantity,
       status,
       totalPrice,
+      Estimated_delivery_date: transaction?.date_time,
     })
   );
 
   const columns: TableColumnsType<TTableData> = [
     {
-      title: "Product Id",
-      key: "product",
-      dataIndex: "product",
+      title: "Order Id",
+      key: "key",
+      dataIndex: "key",
       responsive: ["xs", "sm", "md", "lg"],
     },
     {
-      title: "Customer Email",
-      key: "email",
-      dataIndex: "email",
+      title: "Estimated Delivery Date",
+      key: "Estimated_delivery_date",
+      dataIndex: "Estimated_delivery_date",
       responsive: ["sm", "md", "lg"],
     },
     {
-      title: "Order Status",
+      title: "Current Status",
       key: "status",
       dataIndex: "status",
       responsive: ["xs", "sm", "md", "lg"],
@@ -58,6 +95,12 @@ const OrdersView = () => {
       title: "Total Price",
       key: "totalPrice",
       dataIndex: "totalPrice",
+      responsive: ["xs", "sm", "md", "lg"],
+    },
+    {
+      title: "Quantity",
+      key: "quantity",
+      dataIndex: "quantity",
       responsive: ["xs", "sm", "md", "lg"],
     },
     {

@@ -16,7 +16,7 @@ const VerifyOrder = () => {
   );
 
   const orderData = data?.data?.[0];
-  console.log(orderData);
+  // console.log(orderData);
 
   return isLoading ? (
     <div className="flex justify-center items-center h-screen">

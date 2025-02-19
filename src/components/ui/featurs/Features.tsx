@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Features = () => {
   const { data, isLoading, isFetching } = useGetAllBikeQuery(undefined);
+  // console.log(data?.data?.slice(0, 6));
 
   if (isFetching) {
     return (
@@ -32,7 +33,7 @@ const Features = () => {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-2"
         style={{ marginTop: "12px" }}
       >
-        {data?.data?.map((bike: TBike) => (
+        {data?.data?.slice(0, 6)?.map((bike: TBike) => (
           <FeatureCard key={bike._id} bike={bike}></FeatureCard>
         ))}
       </div>

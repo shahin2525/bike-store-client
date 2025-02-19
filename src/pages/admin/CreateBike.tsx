@@ -39,7 +39,7 @@ const CreateBike = () => {
     };
     try {
       const res = (await createBike(bikeData)) as TResponse<any>;
-      console.log(res);
+      // console.log(res);
       if (res?.error) {
         toast.error(res.error.data.message, { id: toastId });
       } else {

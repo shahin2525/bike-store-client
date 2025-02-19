@@ -14,7 +14,7 @@ type TProtectedRouteProps = {
 };
 const ProtectedRoute = ({ children, role }: TProtectedRouteProps) => {
   const token = useAppSelector(selectCurrentToken);
-  console.log("token", token);
+  // console.log("token", token);
   const location = useLocation();
   //
 
@@ -32,9 +32,9 @@ const ProtectedRoute = ({ children, role }: TProtectedRouteProps) => {
   }
 
   const dispatch = useAppDispatch();
-  console.log("user", user);
-  console.log("user role", user?.data?.role);
-  console.log("role", role);
+  // console.log("user", user);
+  // console.log("user role", user?.data?.role);
+  // console.log("role", role);
 
   if (role && user?.data?.role !== role) {
     dispatch(logout());
