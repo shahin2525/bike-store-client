@@ -48,7 +48,24 @@ const HeaderComponent = () => {
 
   return (
     <Header
-      style={{ backgroundColor: "#09122C", padding: "0 20px", height: "80px" }}
+      // style={{
+      //   backgroundColor: "#09122C",
+      //   padding: "0 20px",
+      //   height: "80px",
+      //   position: "sticky",
+      // }}
+      style={{
+        backgroundColor: "#09122C",
+        padding: "0 20px",
+        height: "80px",
+        position: "sticky",
+        top: 0,
+        zIndex: 1,
+        width: "100%",
+        // display: "flex",
+        alignItems: "center",
+        marginLeft: "1px",
+      }}
     >
       <Row align="middle" justify="space-between" wrap={false}>
         {/* Left Side: Logo */}
@@ -59,6 +76,7 @@ const HeaderComponent = () => {
               alt="Bike Shop Logo"
               style={{
                 marginTop: screens.xs ? "4px" : "8px",
+                paddingBottom: screens.xs ? "4px" : "6px",
                 width: screens.xs ? "40px" : "75px",
                 height: screens.xs ? "40px" : "75px",
               }}
@@ -78,7 +96,7 @@ const HeaderComponent = () => {
               justifyContent: "center",
               color: "white",
               borderBottom: "none",
-              marginBottom: screens.lg ? "18px" : screens.md ? "12px" : "",
+              marginBottom: screens.lg ? "10px" : screens.md ? "12px" : "",
             }}
           />
         </Col>
@@ -88,7 +106,7 @@ const HeaderComponent = () => {
           flex="auto"
           style={{
             textAlign: "right",
-            marginBottom: screens.lg ? "18px" : screens.md ? "12px" : "",
+            marginBottom: screens.lg ? "6px" : screens.md ? "12px" : "",
           }}
         >
           {screens.md ? (

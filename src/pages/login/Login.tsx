@@ -50,8 +50,8 @@ const Login = () => {
         navigate(location?.state ? location.state : "/");
       }
     } catch (error: any) {
-      toast.error(error.data.message, { id: toastId });
-      // console.log(error?.data?.message);
+      toast.error(error?.data?.message, { id: toastId });
+      console.log("error", error?.data?.message);
     }
   };
 

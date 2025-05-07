@@ -15,6 +15,7 @@ import {
 
 const { Search } = Input;
 const AllProducts = () => {
+  console.log("useGet", useGetAllBikeQuery);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filters, setFilters] = useState<{ name: string; value: string }[]>([]);
 
@@ -26,6 +27,7 @@ const AllProducts = () => {
   }
 
   const { data, isFetching } = useGetAllBikeQuery(queryParams);
+  console.log("data", data);
 
   useEffect(() => {
     if (isFetching) {

@@ -34,8 +34,6 @@ const Banner = () => {
       <Carousel autoplay>
         {images.map((image, index) => (
           <div key={index} className="slide">
-            {" "}
-            {/* Use a class name */}
             <img src={image} alt={`carousel${index + 1}`} />
             <div className="text-overlay">
               <div className="left-text">{texts[index].left}</div>
