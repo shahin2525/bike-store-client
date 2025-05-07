@@ -1,11 +1,10 @@
-import { Button, Col, Flex } from "antd";
+import { Button, Col, Flex, Row } from "antd";
 import { FieldValues } from "react-hook-form";
 import { useLoginMutation } from "../../redux/feature/auth/authApi";
 import { verifyToken } from "../../utils/verifyToken";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser } from "../../redux/feature/auth/authSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
 import PHForm from "../../components/form/BSForm";
 import PHInput from "../../components/form/BSInput";
 import { toast } from "sonner";
@@ -13,40 +12,27 @@ import { toast } from "sonner";
 const Login = () => {
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
-  // const [error, setError] = useState("");
-  // console.log(error);
   const location = useLocation();
   const navigate = useNavigate();
 
-  // const defaultValues = {
-  //   email: "samin@s.com",
-  //   password: "user1234",
-  // };
-
   const onSubmit = async (data: FieldValues) => {
     const toastId = toast.loading("Logging in");
-    // console.log(data);
     try {
       const userInfo = {
         email: data.email,
         password: data.password,
       };
       const res = await login(userInfo).unwrap();
-      // const res = (await login(userInfo).unwrap()) as TResponse<any>;
 
-      // console.log(res);
       if (res?.error) {
         toast.error(res.error.data.message, { id: toastId });
       } else {
         const user = verifyToken(res?.data);
-        // console.log(user);
-
         dispatch(setUser({ user: user, token: res?.data }));
-        toast.success("user login successfully", {
+        toast.success("Logged in successfully", {
           id: toastId,
           duration: 2000,
         });
-
         navigate(location?.state ? location.state : "/");
       }
     } catch (error: any) {
@@ -56,30 +42,50 @@ const Login = () => {
   };
 
   return (
-    <Flex align="center" justify="center" style={{ marginTop: "30px" }}>
-      <Col span={6}>
-        <PHForm onSubmit={onSubmit}>
-          <PHInput type="text" name="email" label="Email" />
+    <Row justify="center" style={{ minHeight: "100vh", padding: "20px 0" }}>
+      <Col
+        xs={24}
+        sm={20}
+        md={16}
+        lg={12}
+        xl={10}
+        style={{
+          padding: "20px",
+          border: "1px solid #d9d9d9",
+          borderRadius: "8px",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+          backgroundColor: "#fff",
+        }}
+      >
+        <Flex vertical gap="middle">
+          <h2 style={{ textAlign: "center", marginBottom: "24px" }}>Login</h2>
 
-          <PHInput type="text" name="password" label="Password" />
+          <PHForm onSubmit={onSubmit}>
+            <PHInput type="text" name="email" label="Email" />
+            <PHInput type="password" name="password" label="Password" />
 
-          <Button type="primary" htmlType="submit">
-            submit
-          </Button>
-        </PHForm>
-        <p
-          className="flex justify-center items-center"
-          style={{ marginTop: "10px", fontSize: "16px" }}
-        >
-          <span> Do not have an Account Please</span>
-          <Link to="/register">
-            <Button style={{ marginLeft: "10px" }} type="primary">
-              Register
+            <Button
+              type="primary"
+              htmlType="submit"
+              block
+              size="large"
+              style={{ marginTop: "16px" }}
+            >
+              Login
             </Button>
-          </Link>
-        </p>
+          </PHForm>
+
+          <div style={{ textAlign: "center", marginTop: "16px" }}>
+            <span>Don't have an account? </span>
+            <Link to="/register">
+              <Button type="link" style={{ padding: 0 }}>
+                Register
+              </Button>
+            </Link>
+          </div>
+        </Flex>
       </Col>
-    </Flex>
+    </Row>
   );
 };
 

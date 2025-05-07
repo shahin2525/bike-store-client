@@ -18,6 +18,7 @@ import {
 } from "../../../redux/feature/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import DropdownComponent from "./dropdown/Dropdown";
 // const { Link } = Typography;
 const { Header } = Layout;
 const { useBreakpoint } = Grid;
@@ -122,13 +123,16 @@ const HeaderComponent = () => {
             //   )}
             // </Button>
             user ? (
-              <Button
-                type="primary"
-                icon={<IoLogOutOutline />}
-                onClick={handleLogout}
-              >
-                Logout
-              </Button>
+              <div>
+                <DropdownComponent />
+                <Button
+                  type="primary"
+                  icon={<IoLogOutOutline />}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Button>
+              </div>
             ) : (
               <Button type="primary" icon={<IoLogInOutline />}>
                 <Link to="/login">Login</Link>
