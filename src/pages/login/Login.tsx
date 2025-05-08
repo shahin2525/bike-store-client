@@ -8,14 +8,12 @@
 // import PHForm from "../../components/form/BSForm";
 // import PHInput from "../../components/form/BSInput";
 // import { toast } from "sonner";
-// import { useForm } from "react-hook-form";
 
 // const Login = () => {
 //   const dispatch = useAppDispatch();
 //   const [login] = useLoginMutation();
 //   const location = useLocation();
 //   const navigate = useNavigate();
-//   const { setValue } = useForm();
 
 //   const onSubmit = async (data: FieldValues) => {
 //     const toastId = toast.loading("Logging in");
@@ -43,20 +41,8 @@
 //     }
 //   };
 
-//   // Function to auto-fill recruiter credentials
-//   const fillCustomerCredentials = () => {
-//     setValue("email", "samin@s.com");
-//     setValue("password", "user12345");
-//   };
-
-//   // Function to auto-fill admin credentials
-//   const fillAdminCredentials = () => {
-//     setValue("email", "jhankar@j.com");
-//     setValue("password", "user123");
-//   };
-
 //   return (
-//     <Row justify="center" style={{ minHeight: "80vh", padding: "20px 0" }}>
+//     <Row justify="center" style={{ minHeight: "100vh", padding: "20px 0" }}>
 //       <Col
 //         xs={24}
 //         sm={20}
@@ -69,30 +55,10 @@
 //           borderRadius: "8px",
 //           boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
 //           backgroundColor: "#fff",
-//           fontSize: "20px",
-//           fontWeight: "bold",
 //         }}
 //       >
 //         <Flex vertical gap="middle">
 //           <h2 style={{ textAlign: "center", marginBottom: "24px" }}>Login</h2>
-
-//           {/* Quick Login Buttons */}
-//           <Flex gap="middle" justify="center" style={{ marginBottom: "16px" }}>
-//             <Button
-//               type="dashed"
-//               onClick={fillAdminCredentials}
-//               style={{ fontWeight: "bold" }}
-//             >
-//               Login as Admin
-//             </Button>
-//             <Button
-//               type="dashed"
-//               onClick={fillCustomerCredentials}
-//               style={{ fontWeight: "bold" }}
-//             >
-//               Login as Customer
-//             </Button>
-//           </Flex>
 
 //           <PHForm onSubmit={onSubmit}>
 //             <PHInput type="text" name="email" label="Email" />
