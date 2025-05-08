@@ -2,8 +2,20 @@ import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 // import { RootState } from "@reduxjs/toolkit/query";
 type TAuthData = {
+  // email: string;
+  // role: string;
+  _id: string;
+  name: string;
   email: string;
+  password: string;
   role: string;
+  phone?: string;
+  address?: string;
+  city?: string;
+  deactivate: boolean;
+
+  createdAt: string;
+  updatedAt: string;
 };
 export type TAuthUser = {
   data: TAuthData;

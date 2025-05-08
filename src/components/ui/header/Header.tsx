@@ -126,6 +126,7 @@ const HeaderComponent = () => {
               <div>
                 <DropdownComponent />
                 <Button
+                  className="mr-2"
                   type="primary"
                   icon={<IoLogOutOutline />}
                   onClick={handleLogout}
@@ -134,7 +135,11 @@ const HeaderComponent = () => {
                 </Button>
               </div>
             ) : (
-              <Button type="primary" icon={<IoLogInOutline />}>
+              <Button
+                style={{ marginRight: "12px" }}
+                type="primary"
+                icon={<IoLogInOutline />}
+              >
                 <Link to="/login">Login</Link>
               </Button>
             )

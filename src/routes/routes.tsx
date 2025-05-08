@@ -18,6 +18,7 @@ import OrdersView from "../pages/user/OrdersView";
 import CreateOrder from "../pages/user/CreateOrder";
 import UpdatePassword from "../pages/user/UpdatePassword";
 import VerifyOrder from "../pages/order/VerifyOrder";
+import Profile from "../pages/profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -86,6 +87,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <UpdatePassword />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         ),
       },

@@ -28,6 +28,10 @@ const adminItems: MenuProps["items"] = [
         key: "Manage Order",
         label: <NavLink to="manage-order">Manage Order</NavLink>,
       },
+      {
+        key: "Profile Views",
+        label: <NavLink to="profile">Profile</NavLink>,
+      },
     ],
   },
 ];
@@ -49,6 +53,10 @@ const customerItems: MenuProps["items"] = [
       {
         key: "Orders Views",
         label: <NavLink to="order-view">Orders View</NavLink>,
+      },
+      {
+        key: "Profile Views",
+        label: <NavLink to="profile">Profile</NavLink>,
       },
     ],
   },

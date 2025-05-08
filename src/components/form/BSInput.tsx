@@ -5,8 +5,19 @@ type TInput = {
   name: string;
   label?: string;
   disabled?: boolean;
+  prefix?: React.ReactNode;
+  placeholder?: string;
+  size?: "small" | "middle" | "large";
 };
-const BSInput = ({ type, name, label, disabled }: TInput) => {
+const BSInput = ({
+  type,
+  name,
+  label,
+  disabled,
+  prefix,
+  placeholder,
+  size,
+}: TInput) => {
   return (
     <div style={{ marginBottom: "16px" }}>
       {/* {label ? label : null} : */}
@@ -18,8 +29,11 @@ const BSInput = ({ type, name, label, disabled }: TInput) => {
               {...field}
               type={type}
               id={name}
-              size="large"
+              // size="large"
               disabled={disabled}
+              prefix={prefix}
+              placeholder={placeholder}
+              size={size}
             />
           </Form.Item>
         )}

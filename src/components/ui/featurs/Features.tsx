@@ -21,7 +21,7 @@ const Features = () => {
     </p>;
   }
   return (
-    <div style={{ marginTop: "16px", padding: "0px 10px" }}>
+    <div style={{ marginTop: "40px", padding: "0px 10px 0px 15px" }}>
       {/* <Row  gutter={4}>
         {data?.data?.map((bike: TBike) => (
           <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
@@ -29,6 +29,12 @@ const Features = () => {
           </Col>
         ))}
       </Row> */}
+      <h1
+        style={{ marginBottom: "20px" }}
+        className="text-center text-3xl font-bold"
+      >
+        Features BIkes
+      </h1>
       <div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-2"
         style={{ marginTop: "12px" }}
