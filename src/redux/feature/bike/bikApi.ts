@@ -3,15 +3,32 @@ import { baseApi } from "../../api/baseApi";
 
 const bikeApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+    // get all bike
+    // getAllBike: builder.query({
+    //   query: (args) => {
+    //     const params = new URLSearchParams();
+
+    //     if (args) {
+    //       args.forEach((item: TQueryParam) => {
+    //         params.append(item.name, item.value as string);
+    //       });
+    //     }
+    //     return {
+    //       url: "/api/products",
+    //       method: "GET",
+    //       params: params,
+    //     };
+    //   },
+    //   providesTags: ["bike"],
+    // }),
     getAllBike: builder.query({
-      query: (args) => {
+      query: (args: TQueryParam[]) => {
         const params = new URLSearchParams();
 
-        if (args) {
-          args.forEach((item: TQueryParam) => {
-            params.append(item.name, item.value as string);
-          });
-        }
+        args?.forEach((item: TQueryParam) => {
+          params.append(item.name, item.value as string);
+        });
+
         return {
           url: "/api/products",
           method: "GET",
