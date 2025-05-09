@@ -1,19 +1,20 @@
 // Components/SpecialOffers.tsx
 import { Carousel, Card, Typography, Tag } from "antd";
-
+import image1 from "../../../assets/ebike.jpg";
+import image2 from "../../../assets/mbike.jpg";
 const offers = [
   {
     title: "Summer Sale",
     discount: "30% OFF",
     description: "All mountain bikes this weekend",
-    image: "/summer-sale.jpg",
+    image: image1,
     tagColor: "red",
   },
   {
     title: "E-Bike Special",
     discount: "Free Accessories",
     description: "With every electric bike purchase",
-    image: "/ebike-offer.jpg",
+    image: image2,
     tagColor: "green",
   },
 ];

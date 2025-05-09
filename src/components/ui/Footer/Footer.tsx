@@ -30,16 +30,16 @@ const FooterComponent = () => {
             Quick Links
           </Typography.Title>
           <Space direction="vertical">
-            <Link href="#" style={{ color: "#aaa" }}>
+            <Link href="/" style={{ color: "#aaa" }}>
               Home
             </Link>
-            <Link href="#" style={{ color: "#aaa" }}>
-              Shop
+            <Link href="/all-products" style={{ color: "#aaa" }}>
+              All Products
             </Link>
-            <Link href="#" style={{ color: "#aaa" }}>
+            <Link href="/about" style={{ color: "#aaa" }}>
               About Us
             </Link>
-            <Link href="#" style={{ color: "#aaa" }}>
+            <Link href="/contact" style={{ color: "#aaa" }}>
               Contact
             </Link>
           </Space>
@@ -58,7 +58,7 @@ const FooterComponent = () => {
           </Text>
         </Col>
 
-        <Col xs={24} sm={12} md={6}>
+        {/* <Col xs={24} sm={12} md={6}>
           <Typography.Title level={4} style={{ color: "#fff" }}>
             Follow Us
           </Typography.Title>
@@ -73,7 +73,7 @@ const FooterComponent = () => {
               <InstagramOutlined />
             </a>
           </Space>
-        </Col>
+        </Col> */}
       </Row>
       <div style={{ marginTop: "20px", color: "#aaa" }}>
         © {new Date().getFullYear()} Bike Shop. All Rights Reserved.
