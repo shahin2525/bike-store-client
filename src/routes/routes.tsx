@@ -19,6 +19,8 @@ import CreateOrder from "../pages/user/CreateOrder";
 import UpdatePassword from "../pages/user/UpdatePassword";
 import VerifyOrder from "../pages/order/VerifyOrder";
 import Profile from "../pages/profile/Profile";
+import Services from "../pages/services/Services";
+import Contact from "../pages/contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ export const router = createBrowserRouter([
       {
         path: "all-products",
         element: <AllProducts />,
+      },
+      {
+        path: "services",
+        element: <Services />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
       },
       {
         path: "product-details/:productId",

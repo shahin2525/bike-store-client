@@ -5,6 +5,7 @@ import {
   ClockCircleOutlined,
   DollarOutlined,
 } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const services = [
   {
@@ -22,6 +23,10 @@ const services = [
 ];
 //background: "#fff"
 export default function BikeServices() {
+  const navigate = useNavigate();
+  const handleBook = () => {
+    navigate("/services");
+  };
   return (
     <section style={{ padding: "40px 0" }}>
       <Typography.Title level={2} style={{ textAlign: "center" }}>
@@ -33,7 +38,7 @@ export default function BikeServices() {
         renderItem={(item) => (
           <List.Item
             actions={[
-              <Button type="primary" key="book">
+              <Button onClick={handleBook} type="primary" key="book">
                 Book Now
               </Button>,
             ]}

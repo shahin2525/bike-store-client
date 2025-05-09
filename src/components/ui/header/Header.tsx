@@ -8,6 +8,7 @@ import {
   IoLogOutOutline,
   IoMenu,
 } from "react-icons/io5";
+import { MdMiscellaneousServices } from "react-icons/md";
 import bikeIcon from "../../../assets/icons/bike-icon5.png";
 import style from "../header/header.module.css";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
@@ -19,6 +20,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import DropdownComponent from "./dropdown/Dropdown";
+import { IoMdContact } from "react-icons/io";
+
 // const { Link } = Typography;
 const { Header } = Layout;
 const { useBreakpoint } = Grid;
@@ -44,6 +47,16 @@ const HeaderComponent = () => {
       key: "all-products",
       label: <Link to="/all-products">All Products</Link>,
       icon: <MdOutlineProductionQuantityLimits />,
+    },
+    {
+      key: "services",
+      label: <Link to="/services">Services</Link>,
+      icon: <MdMiscellaneousServices />,
+    },
+    {
+      key: "contact",
+      label: <Link to="/contact">Contact</Link>,
+      icon: <IoMdContact />,
     },
   ];
 

@@ -15,7 +15,7 @@ const categories = [
 
 export default function PopularCategories() {
   return (
-    <section style={{ padding: "40px 0", background: "#f5f5f5" }}>
+    <section style={{ padding: "40px 15px", background: "#f5f5f5" }}>
       <Typography.Title level={2} style={{ textAlign: "center" }}>
         Shop By Category
       </Typography.Title>
@@ -25,7 +25,13 @@ export default function PopularCategories() {
             <Card
               hoverable
               cover={category.icon}
-              style={{ textAlign: "center" }}
+              style={{
+                textAlign: "center",
+                height: "150px",
+                width: "300px",
+                paddingTop: "20px",
+                color: "primary",
+              }}
             >
               <Typography.Title level={4}>{category.name}</Typography.Title>
               <Typography.Text>
