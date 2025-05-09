@@ -1,10 +1,6 @@
 // Components/BikeServices.tsx
 import { List, Typography, Button } from "antd";
-import {
-  ToolOutlined,
-  ClockCircleOutlined,
-  DollarOutlined,
-} from "@ant-design/icons";
+import { ToolOutlined, ClockCircleOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
 const services = [

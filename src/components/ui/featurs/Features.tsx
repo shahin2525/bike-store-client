@@ -1,11 +1,12 @@
 import { Button } from "antd";
-import { useGetAllBikeQuery } from "../../../redux/feature/bike/bikApi";
+// import { useGetAllBikeQuery } from "../../../redux/feature/bike/bikApi";
 import { TBike } from "../../../types/bike.type";
 import FeatureCard from "./FeatureCard";
 import { Link } from "react-router-dom";
+import { useGetAllBikeJustQuery } from "../../../redux/feature/bike/bikApi";
 
 const Features = () => {
-  const { data, isLoading, isFetching } = useGetAllBikeQuery(undefined);
+  const { data, isLoading, isFetching } = useGetAllBikeJustQuery(undefined);
   // console.log(data?.data?.slice(0, 6));
 
   if (isFetching) {

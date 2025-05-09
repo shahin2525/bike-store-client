@@ -2,7 +2,7 @@ import { Button, Space, Table, TableColumnsType } from "antd";
 import { Link } from "react-router-dom";
 import {
   useDeleteBikeMutation,
-  useGetAllBikeQuery,
+  useGetAllBikeJustQuery,
 } from "../../../redux/feature/bike/bikApi";
 import { TBike } from "../../../types/bike.type";
 import { toast } from "sonner";
@@ -14,7 +14,7 @@ const ManageBike = () => {
     data: bikeData,
 
     isFetching,
-  } = useGetAllBikeQuery(undefined);
+  } = useGetAllBikeJustQuery(undefined);
   const [deleteBike, { isLoading: deleteIsLoading }] = useDeleteBikeMutation();
   // console.log(isError);
   // console.log("bikeData", bikeData);

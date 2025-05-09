@@ -66,16 +66,7 @@
 // };
 
 // export default Register;
-import {
-  Button,
-  Card,
-  Divider,
-  Flex,
-  Form,
-  Grid,
-  Typography,
-  theme,
-} from "antd";
+import { Button, Card, Divider, Flex, Grid, Typography, theme } from "antd";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { FieldValues } from "react-hook-form";

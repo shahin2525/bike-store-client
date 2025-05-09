@@ -50,12 +50,12 @@ const HeaderComponent = () => {
     },
     {
       key: "services",
-      label: <Link to="/services">Services</Link>,
+      label: <Link to="/services">Our Services</Link>,
       icon: <MdMiscellaneousServices />,
     },
     {
       key: "contact",
-      label: <Link to="/contact">Contact</Link>,
+      label: <Link to="/contact">Contact Us</Link>,
       icon: <IoMdContact />,
     },
   ];

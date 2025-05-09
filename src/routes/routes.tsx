@@ -21,6 +21,7 @@ import VerifyOrder from "../pages/order/VerifyOrder";
 import Profile from "../pages/profile/Profile";
 import Services from "../pages/services/Services";
 import Contact from "../pages/contact/Contact";
+import AdminDashboard from "../pages/admin/adminDashoard/AdminDashboard";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +57,22 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute role="admin">
             <CreateBike />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "admin-dashboard",
+        element: (
+          <ProtectedRoute role="admin">
+            <AdminDashboard />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "user-dashboard",
+        element: (
+          <ProtectedRoute role="user">
+            <AdminDashboard />
           </ProtectedRoute>
         ),
       },

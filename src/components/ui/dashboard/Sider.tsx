@@ -11,6 +11,10 @@ const adminItems: MenuProps["items"] = [
     type: "group",
     children: [
       {
+        key: "Admin dashboard",
+        label: <NavLink to="admin-dashboard">Admin Dashboard</NavLink>,
+      },
+      {
         key: "Create Bike",
         label: <NavLink to="create-bike">Create Bike</NavLink>,
       },

@@ -40,7 +40,8 @@
 
 // export default DropdownComponent;
 import { Avatar, Dropdown, MenuProps, Space } from "antd";
-import { SettingOutlined, UserOutlined } from "@ant-design/icons";
+// import { UserOutlined } from "@ant-design/icons";
+import { TiUserOutline } from "react-icons/ti";
 import { useNavigate } from "react-router-dom"; // or your routing library
 
 const DropdownComponent = () => {
@@ -80,7 +81,7 @@ const DropdownComponent = () => {
         <Space>
           <Avatar
             size="default"
-            icon={<UserOutlined />}
+            icon={<TiUserOutline />}
             style={{ backgroundColor: "#1890ff" }}
           />
         </Space>

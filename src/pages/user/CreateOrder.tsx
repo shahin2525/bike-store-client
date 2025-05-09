@@ -5,19 +5,20 @@ import { Button, Col, Row } from "antd";
 import { toast } from "sonner";
 // import { TResponse } from "../../../types/global.types";
 import { FieldValues, SubmitHandler } from "react-hook-form";
-import { useGetAllBikeQuery } from "../../redux/feature/bike/bikApi";
+// import { useGetAllBikeQuery } from "../../redux/feature/bike/bikApi";
 import { useCreateOrderMutation } from "../../redux/feature/order/orderApi";
 import { TBike } from "../../types/bike.type";
 import { TResponse } from "../../types/global.types";
 import PHForm from "../../components/form/BSForm";
 import PHInput from "../../components/form/BSInput";
 import BSSelect from "../../components/form/BSSelect";
+import { useGetAllBikeJustQuery } from "../../redux/feature/bike/bikApi";
 // import { useCreateOrderMutation } from "../../../redux/feature/order/orderApi";
 // import { useGetAllBikeQuery } from "../../../redux/feature/bike/bikApi";
 // import { TBike } from "../../../types/bike.type";
 
 const CreateOrder = () => {
-  const { data: productData } = useGetAllBikeQuery(undefined);
+  const { data: productData } = useGetAllBikeJustQuery(undefined);
   // console.log(productData);
   const [createOrder] = useCreateOrderMutation();
 

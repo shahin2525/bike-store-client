@@ -28,7 +28,7 @@ export default function PopularCategories() {
               style={{
                 textAlign: "center",
                 height: "150px",
-                width: "300px",
+                maxWidth: "300px",
                 paddingTop: "20px",
                 color: "primary",
               }}
