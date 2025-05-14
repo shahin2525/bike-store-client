@@ -1,5 +1,4 @@
-// export default Login;
-import { Button, Col, Flex, Row } from "antd";
+import { Button, Flex, Typography, Divider, Card } from "antd";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 import { useLoginMutation } from "../../redux/feature/auth/authApi";
 import { verifyToken } from "../../utils/verifyToken";
@@ -10,6 +9,8 @@ import PHForm from "../../components/form/BSForm";
 import PHInput from "../../components/form/BSInput";
 import { toast } from "sonner";
 
+const { Title, Text } = Typography;
+
 const Login = () => {
   const dispatch = useAppDispatch();
   const [login] = useLoginMutation();
@@ -17,7 +18,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const onSubmit = async (data: FieldValues) => {
-    const toastId = toast.loading("Logging in");
+    const toastId = toast.loading("Logging in...");
     try {
       const userInfo = {
         email: data.email,
@@ -37,31 +38,57 @@ const Login = () => {
         navigate(location?.state ? location.state : "/");
       }
     } catch (error: any) {
-      toast.error(error?.data?.message, { id: toastId });
-      console.log("error", error?.data?.message);
+      toast.error(error?.data?.message || "Login failed", { id: toastId });
+      console.error("Login Error:", error?.data?.message);
     }
   };
 
   return (
-    <Row justify="center" style={{ minHeight: "80vh", padding: "20px 0" }}>
-      <Col
-        xs={24}
-        sm={20}
-        md={16}
-        lg={12}
-        xl={10}
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "24px",
+      }}
+    >
+      <Card
         style={{
-          padding: "20px",
-          border: "1px solid #d9d9d9",
-          borderRadius: "8px",
-          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-          backgroundColor: "#fff",
-          fontSize: "20px",
-          fontWeight: "bold",
+          width: "100%",
+          maxWidth: "580px",
+          borderRadius: "12px",
+          boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
+          border: "none",
+          overflow: "hidden",
         }}
+        styles={{ body: { padding: "40px" } }}
       >
-        <Flex vertical gap="middle">
-          <h2 style={{ textAlign: "center", marginBottom: "24px" }}>Login</h2>
+        <Flex vertical gap="large" align="center">
+          {/* Logo and Header */}
+          <Flex vertical align="center" gap="middle">
+            <div
+              style={{
+                width: "84px",
+                height: "84px",
+                borderRadius: "50%",
+                backgroundColor: "#09122C",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                color: "white",
+                fontSize: "24px",
+                fontWeight: "bold",
+              }}
+            >
+              BShop
+            </div>
+            <Title level={3} style={{ margin: 0, color: "#09122C" }}>
+              Welcome Back
+            </Title>
+            <Text type="secondary">Sign in to continue to Bike Shop</Text>
+          </Flex>
 
           <PHForm onSubmit={onSubmit}>
             {(methods: UseFormReturn<FieldValues>) => {
@@ -78,57 +105,98 @@ const Login = () => {
               };
 
               return (
-                <>
+                <Flex vertical gap="large" style={{ width: "100%" }}>
                   {/* Quick Login Buttons */}
-                  <Flex
-                    gap="middle"
-                    justify="center"
-                    style={{ marginBottom: "16px" }}
-                  >
-                    <Button
-                      type="dashed"
-                      onClick={fillAdminCredentials}
-                      style={{ fontWeight: "bold" }}
+                  <Flex vertical gap="small">
+                    <Divider
+                      plain
+                      style={{ margin: "8px 0", fontSize: "12px" }}
                     >
-                      Login as Admin
-                    </Button>
-                    <Button
-                      type="dashed"
-                      onClick={fillCustomerCredentials}
-                      style={{ fontWeight: "bold" }}
-                    >
-                      Login as Customer
-                    </Button>
+                      Or try demo accounts
+                    </Divider>
+                    <Flex gap="small">
+                      <Button
+                        onClick={fillAdminCredentials}
+                        block
+                        style={{
+                          backgroundColor: "#f0f0f0",
+                          color: "#09122C",
+                          border: "none",
+                        }}
+                      >
+                        Admin
+                      </Button>
+                      <Button
+                        onClick={fillCustomerCredentials}
+                        block
+                        style={{
+                          backgroundColor: "#f0f0f0",
+                          color: "#09122C",
+                          border: "none",
+                        }}
+                      >
+                        Customer
+                      </Button>
+                    </Flex>
                   </Flex>
 
-                  <PHInput type="text" name="email" label="Email" />
-                  <PHInput type="password" name="password" label="Password" />
+                  {/* Form Fields */}
+                  <Flex vertical gap="middle">
+                    <PHInput
+                      type="text"
+                      name="email"
+                      label="Email"
+                      placeholder="Enter your email"
+                      size="large"
+                    />
+                    <PHInput
+                      type="password"
+                      name="password"
+                      label="Password"
+                      placeholder="Enter your password"
+                      size="large"
+                    />
+                  </Flex>
 
+                  {/* Submit Button */}
                   <Button
                     type="primary"
                     htmlType="submit"
                     block
                     size="large"
-                    style={{ marginTop: "16px" }}
+                    style={{
+                      marginTop: "16px",
+                      backgroundColor: "#09122C",
+                      height: "48px",
+                      fontWeight: "500",
+                    }}
                   >
-                    Login
+                    Sign In
                   </Button>
-                </>
+                </Flex>
               );
             }}
           </PHForm>
 
-          <div style={{ textAlign: "center", marginTop: "16px" }}>
-            <span>Don't have an account? </span>
+          {/* Footer Link */}
+          <Flex gap="small">
+            <Text type="secondary">Don't have an account?</Text>
             <Link to="/register">
-              <Button type="link" style={{ padding: 0 }}>
-                Register
+              <Button
+                type="link"
+                style={{
+                  padding: 0,
+                  fontWeight: "500",
+                  color: "#09122C",
+                }}
+              >
+                Sign up
               </Button>
             </Link>
-          </div>
+          </Flex>
         </Flex>
-      </Col>
-    </Row>
+      </Card>
+    </div>
   );
 };
 

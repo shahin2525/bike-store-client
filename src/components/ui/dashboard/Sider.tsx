@@ -1,5 +1,5 @@
 import { Layout, Menu, MenuProps } from "antd";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../../redux/hooks";
 import { selectCurrentToken } from "../../../redux/feature/auth/authSlice";
 import { verifyToken } from "../../../utils/verifyToken";
@@ -11,29 +11,29 @@ const adminItems: MenuProps["items"] = [
     type: "group",
     children: [
       {
-        key: "Admin dashboard",
+        key: "admin-dashboard",
         label: <NavLink to="admin-dashboard">Admin Dashboard</NavLink>,
       },
       {
-        key: "Create Bike",
+        key: "create-bike",
         label: <NavLink to="create-bike">Create Bike</NavLink>,
       },
 
       {
-        key: "Manage Bike",
+        key: "manage-bike",
         label: <NavLink to="manage-bike">Manage Bike</NavLink>,
       },
 
       {
-        key: "Manage User",
+        key: "manage-user",
         label: <NavLink to="manage-user">Manage Customer</NavLink>,
       },
       {
-        key: "Manage Order",
+        key: "manage-order",
         label: <NavLink to="manage-order">Manage Order</NavLink>,
       },
       {
-        key: "Profile Views",
+        key: "profile",
         label: <NavLink to="profile">Profile</NavLink>,
       },
     ],
@@ -49,17 +49,20 @@ const customerItems: MenuProps["items"] = [
       //   key: "Create Order",
       //   label: <NavLink to="create-order">Create Order</NavLink>,
       // },
-
       {
-        key: "Update Password",
+        key: "customer-dashboard",
+        label: <NavLink to="customer-dashboard">Customer Dashboard</NavLink>,
+      },
+      {
+        key: "update-password",
         label: <NavLink to="update-password">Change Password</NavLink>,
       },
       {
-        key: "Orders Views",
+        key: "order-view",
         label: <NavLink to="order-view">Orders View</NavLink>,
       },
       {
-        key: "Profile Views",
+        key: "profile",
         label: <NavLink to="profile">Profile</NavLink>,
       },
     ],
@@ -76,6 +79,8 @@ export type TAuthUser = {
 };
 
 const Sidebar = () => {
+  const location = useLocation();
+  const currentPath = location.pathname.split("/").pop();
   // const role = "admin";
   const token = useAppSelector(selectCurrentToken);
   // const user = useAppSelector(selectCurrentUser);
@@ -127,7 +132,10 @@ const Sidebar = () => {
       <Menu
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={["4"]}
+        // defaultSelectedKeys={[
+        //   user?.data?.role === "admin" ? "Admin dashboard" : "Orders Views",
+        // ]}
+        selectedKeys={[currentPath as string]}
         items={sidebarItems}
       />
     </Sider>

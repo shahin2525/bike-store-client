@@ -22,6 +22,7 @@ import Profile from "../pages/profile/Profile";
 import Services from "../pages/services/Services";
 import Contact from "../pages/contact/Contact";
 import AdminDashboard from "../pages/admin/adminDashoard/AdminDashboard";
+import UserDashboard from "../pages/user/UserDashboard";
 
 export const router = createBrowserRouter([
   {
@@ -69,10 +70,10 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "user-dashboard",
+        path: "customer-dashboard",
         element: (
-          <ProtectedRoute role="user">
-            <AdminDashboard />
+          <ProtectedRoute role="customer">
+            <UserDashboard />
           </ProtectedRoute>
         ),
       },

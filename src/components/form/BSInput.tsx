@@ -8,6 +8,7 @@ type TInput = {
   prefix?: React.ReactNode;
   placeholder?: string;
   size?: "small" | "middle" | "large";
+  style?: "string";
 };
 const BSInput = ({
   type,

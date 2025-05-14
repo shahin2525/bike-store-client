@@ -1,12 +1,3 @@
-// const AdminDashboard = () => {
-//   return (
-//     <div>
-//       <h1>Admin Dashboard</h1>
-//     </div>
-//   );
-// };
-
-// export default AdminDashboard;
 import { Card, Col, Row, Space, Spin, Typography } from "antd";
 import {
   Chart as ChartJS,

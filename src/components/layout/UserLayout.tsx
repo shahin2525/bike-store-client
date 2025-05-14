@@ -10,6 +10,7 @@ const { Content } = Layout;
 
 const UserLayout = () => {
   const user = useAppSelector(selectCurrentUser);
+  // if (!user) return null;
 
   return (
     <Layout>
