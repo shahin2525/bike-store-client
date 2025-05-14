@@ -37,37 +37,35 @@ const HeaderComponent = () => {
     navigate("/");
   };
   const menuItems = [
-    { key: "home", label: <Link to="/">Home</Link>, icon: <IoHomeOutline /> },
+    {
+      key: "home",
+      label: <Link to="/">Home</Link>,
+      icon: <IoHomeOutline size={18} color="white" />,
+    },
     {
       key: "about",
       label: <Link to="/about">About</Link>,
-      icon: <FaCircleInfo />,
+      icon: <FaCircleInfo color="white" size={18} />,
     },
     {
       key: "all-products",
       label: <Link to="/all-products">All Products</Link>,
-      icon: <MdOutlineProductionQuantityLimits />,
+      icon: <MdOutlineProductionQuantityLimits size={18} color="white" />,
     },
     {
       key: "services",
       label: <Link to="/services">Our Services</Link>,
-      icon: <MdMiscellaneousServices />,
+      icon: <MdMiscellaneousServices size={18} color="white" />,
     },
     {
       key: "contact",
       label: <Link to="/contact">Contact Us</Link>,
-      icon: <IoMdContact />,
+      icon: <IoMdContact size={18} color="white" />,
     },
   ];
 
   return (
     <Header
-      // style={{
-      //   backgroundColor: "#09122C",
-      //   padding: "0 20px",
-      //   height: "80px",
-      //   position: "sticky",
-      // }}
       style={{
         backgroundColor: "#09122C",
         padding: "0 20px",
@@ -78,7 +76,7 @@ const HeaderComponent = () => {
         width: "100%",
         // display: "flex",
         alignItems: "center",
-        marginLeft: "1px",
+        // marginLeft: "1px",
       }}
     >
       <Row align="middle" justify="space-between" wrap={false}>
@@ -89,10 +87,10 @@ const HeaderComponent = () => {
               src={bikeIcon}
               alt="Bike Shop Logo"
               style={{
-                marginTop: screens.xs ? "4px" : "8px",
-                paddingBottom: screens.xs ? "4px" : "6px",
-                width: screens.xs ? "40px" : "75px",
-                height: screens.xs ? "40px" : "75px",
+                marginTop: screens.xs ? "4px" : "5px",
+                paddingBottom: screens.xs ? "4px" : "8px",
+                width: screens.xs ? "40px" : "85px",
+                height: screens.xs ? "40px" : "85px",
               }}
             />
           </Link>
@@ -110,6 +108,8 @@ const HeaderComponent = () => {
               justifyContent: "center",
               color: "white",
               borderBottom: "none",
+              // height: "40px",
+              // width: "40px",
               marginBottom: screens.lg ? "10px" : screens.md ? "12px" : "",
             }}
           />
@@ -149,7 +149,7 @@ const HeaderComponent = () => {
               </div>
             ) : (
               <Button
-                style={{ marginRight: "12px" }}
+                style={{ marginRight: "18px" }}
                 type="primary"
                 icon={<IoLogInOutline />}
               >

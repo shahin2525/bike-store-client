@@ -22,7 +22,7 @@ const Features = () => {
     </p>;
   }
   return (
-    <div style={{ marginTop: "40px", padding: "0px 10px 0px 15px" }}>
+    <div style={{ marginTop: "40px", padding: "0px 20px 0px 20px" }}>
       {/* <Row  gutter={4}>
         {data?.data?.map((bike: TBike) => (
           <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
@@ -37,10 +37,10 @@ const Features = () => {
         Features BIkes
       </h1>
       <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-2"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 my-2"
         style={{ marginTop: "12px" }}
       >
-        {data?.data?.slice(0, 6)?.map((bike: TBike) => (
+        {data?.data?.slice(0, 8)?.map((bike: TBike) => (
           <FeatureCard key={bike._id} bike={bike}></FeatureCard>
         ))}
       </div>

@@ -1,13 +1,7 @@
 // import { Col, Layout, Row, Space, Typography } from "antd";
 // const { Footer } = Layout;
 import { Layout, Row, Col, Typography, Space } from "antd";
-import {
-  FacebookOutlined,
-  TwitterOutlined,
-  InstagramOutlined,
-  MailOutlined,
-  PhoneOutlined,
-} from "@ant-design/icons";
+import { MailOutlined, PhoneOutlined } from "@ant-design/icons";
 
 const { Footer } = Layout;
 const { Link, Text } = Typography;

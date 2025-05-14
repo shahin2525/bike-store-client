@@ -15,7 +15,14 @@ const categories = [
 
 export default function PopularCategories() {
   return (
-    <section style={{ padding: "40px 15px", background: "#f5f5f5" }}>
+    <section
+      style={{
+        padding: "40px 20px",
+        background: "#f5f5f5",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}
+    >
       <Typography.Title level={2} style={{ textAlign: "center" }}>
         Shop By Category
       </Typography.Title>

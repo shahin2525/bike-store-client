@@ -1,10 +1,12 @@
+import { Button } from "antd";
 import { TBike } from "../../../types/bike.type";
+import { Link } from "react-router-dom";
 type FeatureCardProps = {
   bike: TBike;
 };
 
 const FeatureCard = ({ bike }: FeatureCardProps) => {
-  const { bikeImage, description, brand } = bike;
+  const { bikeImage, description, brand, _id } = bike;
   return (
     <div
       className=" rounded-md shadow-md dark:bg-gray-50 dark:text-gray-900"
@@ -24,6 +26,11 @@ const FeatureCard = ({ bike }: FeatureCardProps) => {
       >
         {description}
       </p>
+      <div style={{ padding: "4px 7px" }}>
+        <Button type="primary">
+          <Link to={`/product-details/${_id}`}>Bike Details</Link>
+        </Button>
+      </div>
     </div>
   );
 };

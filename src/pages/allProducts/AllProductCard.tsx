@@ -25,7 +25,7 @@ const AllProductCard = ({ bike }: AllProductCardProps) => {
             <p className="font-bold text-black">Price: {price}$</p>
             <div style={{ marginTop: "8px" }}>
               <Button type="primary">
-                <Link to={`/product-details/${_id}`}>Product Details</Link>
+                <Link to={`/product-details/${_id}`}>Bike Details</Link>
               </Button>
             </div>
           </>

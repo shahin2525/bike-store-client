@@ -13,7 +13,15 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <div style={{ maxWidth: "1280px", margin: "auto" }}>
+        <div
+          //  style={{ maxWidth: "1280px", margin: "auto" }}
+          style={{
+            // paddingLeft: "16px",
+            // paddingRight: "16px",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
           <RouterProvider router={router} />
         </div>
       </PersistGate>
